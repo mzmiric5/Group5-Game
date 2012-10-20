@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TileEngine
 {
-    public class Class1
+    class Area
     {
     }
 }
