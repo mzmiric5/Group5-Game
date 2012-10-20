@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Editor
+namespace Group5.Editor
 {
-    public partial class Form1 : Form
+    partial class Form1 : Form
     {
         public Form1()
         {

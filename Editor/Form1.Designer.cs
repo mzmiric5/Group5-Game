@@ -1,4 +1,4 @@
-﻿namespace Editor
+﻿namespace Group5.Editor
 {
     partial class Form1
     {

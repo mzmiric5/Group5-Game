@@ -8,7 +8,7 @@
     <ProjectGuid>{30DD10EF-A11A-43CD-B64D-18431F913393}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TileEngine</RootNamespace>
+    <RootNamespace>Group5.TileEngine</RootNamespace>
     <AssemblyName>TileEngine</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
