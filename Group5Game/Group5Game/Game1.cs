@@ -19,6 +19,19 @@ namespace Group5Game
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+
+        // Data Structure
+        // -Single Character
+        public Character character;
+        // -List of NCPs
+        public List<NPC> NPCs;
+        // -List of Items
+        public List<Item> items;
+        // -Level Manager
+        public LevelManager levelManager;
+
+
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -34,7 +47,14 @@ namespace Group5Game
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            
+            
+            //this.levelManager = new LevelManager();
+            //this.character = new Character();
+            //this.levelManager.makeNPCs(this.NPCs);
+            //this.levelManager.makeItems(this.items);
+            
+            
             base.Initialize();
         }
 
@@ -71,6 +91,10 @@ namespace Group5Game
                 this.Exit();
 
             // TODO: Add your update logic here
+            
+            // add controller logic here to handle input and call methods of the character etc if required
+            
+            
 
             base.Update(gameTime);
         }
@@ -84,6 +108,19 @@ namespace Group5Game
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            
+            // draw all items in data structure
+            /*
+            this.character.draw();
+            foreach (NPC npc in this.NPCs)
+            {
+              npc.draw();
+            }
+            foreach (Item item in this.items)
+            {
+              item.draw();
+            }
+            */
 
             base.Draw(gameTime);
         }
