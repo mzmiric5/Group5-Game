@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Group5Game
 {
-    class Actor : PhysicsObject
+    class Enemy : Actor
     {
     	private double xCoord, yCoord, height, width;
     	
-    	public Actor (double xIn, double yIn, double hIn, double wIn)
+    	public Enemy (double xIn, double yIn, double hIn, double wIn)
     	               : base(xIn, yIn, hIn, wIn)
     	{	
     	}
