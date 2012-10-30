@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-namespace Group5Game
+namespace Group5.Game
 {
     /// <summary>
     /// This is the main type for your game

@@ -7,7 +7,7 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Group5Game</RootNamespace>
+    <RootNamespace>Group5.Game</RootNamespace>
     <AssemblyName>Group5Game</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
@@ -107,6 +107,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Camera.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="LevelManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -118,6 +119,10 @@
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\TileEngine\TileEngine.csproj">
+      <Project>{30DD10EF-A11A-43CD-B64D-18431F913393}</Project>
+      <Name>TileEngine</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Group5GameContent\Group5GameContent.contentproj">
       <Name>Group5GameContent</Name>
       <XnaReferenceType>Content</XnaReferenceType>

@@ -5,7 +5,7 @@ using System.Text;
 using Group5.TileEngine;
 using Microsoft.Xna.Framework;
 
-namespace Group5Game
+namespace Group5.Game
 {
     public static class Camera
     {
