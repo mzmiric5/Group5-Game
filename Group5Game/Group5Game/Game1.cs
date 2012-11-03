@@ -19,6 +19,7 @@ namespace Group5.Game
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        public static InputState input = new InputState();
 
         // Data Structure
         // -Single Character
@@ -93,7 +94,7 @@ namespace Group5.Game
             // TODO: Add your update logic here
             
             // add controller logic here to handle input and call methods of the character etc if required
-            
+            input.Update();
             
 
             base.Update(gameTime);
