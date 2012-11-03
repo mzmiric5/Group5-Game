@@ -19,7 +19,6 @@ namespace Group5Game
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        public static InputState input = new InputState();
 
         // Data Structure
         // -Single Character
