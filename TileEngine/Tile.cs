@@ -15,9 +15,29 @@ namespace Group5.TileEngine
 		/// <summary>Index to tile in texture map for each layer.</summary>
 		private int[] mLayerTextureIndex;
 
+		/// <summary>Type and associated general logic for the tile.</summary>
+		private TileType mType;
+
 		public Tile()
 		{
 			mLayerTextureIndex = new int[NumLayers];
+		}
+
+		/// <summary>
+		/// Gets the indicies of all the layered textures.
+		/// </summary>
+		public int[] LayerTextureIndex
+		{
+			get { return mLayerTextureIndex; }
+		}
+
+		/// <summary>
+		/// Gets or sets the type and general logic of the tile.
+		/// </summary>
+		public TileType Type
+		{
+			get { return mType; }
+			set { mType = value; }
 		}
 	}
 }
