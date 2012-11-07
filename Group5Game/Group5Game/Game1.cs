@@ -23,7 +23,7 @@ namespace Group5.Game
 
         // Data Structure
         // -Single Character
-        public Character character;
+        public Player player;
         // -List of NCPs
         public List<NPC> NPCs;
         // -List of Items
@@ -50,10 +50,10 @@ namespace Group5.Game
             // TODO: Add your initialization logic here
             
             
-            //this.levelManager = new LevelManager();
-            //this.character = new Character();
-            //this.levelManager.makeNPCs(this.NPCs);
-            //this.levelManager.makeItems(this.items);
+            this.levelManager = new LevelManager(this);
+            this.player = new Player();
+            this.levelManager.makeNPCs(this.NPCs);
+            this.levelManager.makeItems(this.items);
             
             
             base.Initialize();
@@ -96,6 +96,16 @@ namespace Group5.Game
             // add controller logic here to handle input and call methods of the character etc if required
             input.Update();
             
+            /*
+            
+            todo: make a state machine
+            
+            */
+            
+            if (levelManager.check_victory_condition())
+            {
+              // todo: change state
+            }
 
             base.Update(gameTime);
         }
@@ -112,7 +122,7 @@ namespace Group5.Game
             
             // draw all items in data structure
             /*
-            this.character.draw();
+            this.player.draw();
             foreach (NPC npc in this.NPCs)
             {
               npc.draw();
