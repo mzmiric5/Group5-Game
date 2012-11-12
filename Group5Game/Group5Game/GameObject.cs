@@ -24,6 +24,10 @@ namespace Group5Game
     	{
     		return yCoord;
     	}
+	
+	public void draw()
+	{
+	}
     	
     }
 }
