@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Group5Game
+namespace Group5.Game
 {
     class Milk : Item
     {
@@ -14,7 +14,7 @@ namespace Group5Game
     	{	
     	}
       
-      public pick_up(Player player)
+      public void pick_up(Player player)
       {
         player.inventory.Add(this);
       }

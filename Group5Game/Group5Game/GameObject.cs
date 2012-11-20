@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Group5.Game
 {
-    class GameObject
+    public class GameObject
     {
     	private double xCoord, yCoord;
     	

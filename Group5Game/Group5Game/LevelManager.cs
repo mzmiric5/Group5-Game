@@ -10,10 +10,9 @@ namespace Group5.Game
       
       public String name;
       public Game1 game;
-      
-      public LevelManager(Game1 game)
+
+      public LevelManager(Game1 game) : this(0, game)
       {
-        this(0, game);
       }
       
       public LevelManager(int level_number, Game1 game)
@@ -44,7 +43,7 @@ namespace Group5.Game
         */
         
         // todo: change this: for first game iteration make stuff up
-        items.Add(new Milk(10.d, 10.d, 1.0d, 1.0d);
+        items.Add(new Milk(10.0d, 10.0d, 1.0d, 1.0d));
       }
       
       public bool check_victory_condition()
@@ -53,15 +52,12 @@ namespace Group5.Game
         bool player_has_milk = false;
         foreach (Item item in game.player.inventory)
         {
-          if (item.GetType().Equals(Milk))
-          {
-            return true;
-          }
-          else
-          {
-            return false;
-          }
+            if (item.GetType() == typeof(Milk))
+            {
+                player_has_milk = true;
+            }
         }
+        return player_has_milk;
       }
     }
 }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Group5Game
+namespace Group5.Game
 {
-    class PhysicsObject : GameObject
+    public class PhysicsObject : GameObject
     {
     	private double xCoord, yCoord, height, width;
     	
@@ -23,7 +23,7 @@ namespace Group5Game
 	
 	public double returnW()
 	{
-		return weight;
+        return width;
 	}	
     }
 }

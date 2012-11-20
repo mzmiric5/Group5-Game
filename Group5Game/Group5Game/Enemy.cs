@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Group5Game
+namespace Group5.Game
 {
-    class Enemy : Actor
+    class Enemy : NPC
     {
     	private double xCoord, yCoord, height, width;
       
