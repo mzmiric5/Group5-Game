@@ -44,7 +44,7 @@ namespace Group5.Game
         */
         
         // todo: change this: for first game iteration make stuff up
-        items.Add(new Milk(10.d, 10.d, 1.0d, 1.0d)
+        items.Add(new Milk(10.d, 10.d, 1.0d, 1.0d);
       }
       
       public bool check_victory_condition()

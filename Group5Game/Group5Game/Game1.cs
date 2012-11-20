@@ -22,16 +22,10 @@ namespace Group5.Game
         public static InputState input = new InputState();
 
         // Data Structure
-        // -Single Character
         public Player player;
-        // -List of NCPs
         public List<NPC> NPCs;
-        // -List of Items
         public List<Item> items;
-        // -Level Manager
         public LevelManager levelManager;
-
-
 
         public Game1()
         {
@@ -96,15 +90,10 @@ namespace Group5.Game
             // add controller logic here to handle input and call methods of the character etc if required
             input.Update();
             
-            /*
-            
-            todo: make a state machine
-            
-            */
-            
             if (levelManager.check_victory_condition())
             {
               // todo: change state
+              Exit();
             }
 
             base.Update(gameTime);
