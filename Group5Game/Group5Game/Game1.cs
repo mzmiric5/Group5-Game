@@ -18,7 +18,9 @@ namespace Group5.Game
     public class Game1 : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        public SpriteBatch spriteBatch;
+
+        public Dictionary<string, Texture2D> texture_dictionary;
 
         public static InputState input = new InputState();
 
@@ -32,6 +34,7 @@ namespace Group5.Game
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            texture_dictionary = new Dictionary<string, Texture2D>();
         }
 
         /// <summary>
@@ -62,8 +65,13 @@ namespace Group5.Game
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            
             // TODO: use this.Content to load your game content here
+
+            texture_dictionary.Add("default_player_texture", this.Content.Load<Texture2D>(".//textures/default_player_texture"));
+            texture_dictionary.Add("milk_texture", this.Content.Load<Texture2D>(".//textures/milk_texture"));
+            texture_dictionary.Add("ork_texture", this.Content.Load<Texture2D>(".//textures/ork_texture"));
+
         }
 
         /// <summary>
@@ -107,12 +115,10 @@ namespace Group5.Game
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            // TODO: Add your drawing code here
+            spriteBatch.Begin();
             
             // draw all items in data structure
-            /*
-            this.player.draw();
+            this.player.draw(this);
             foreach (NPC npc in this.NPCs)
             {
               npc.draw();
@@ -121,8 +127,8 @@ namespace Group5.Game
             {
               item.draw();
             }
-            */
 
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }

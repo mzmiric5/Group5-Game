@@ -13,5 +13,12 @@ namespace Group5.Game
     	              : base(xIn, yIn, hIn, wIn)
     	{	
     	}
+
+
+        public void draw()
+        {
+            // TODO: add draw method
+        }
+    	
     }
 }
