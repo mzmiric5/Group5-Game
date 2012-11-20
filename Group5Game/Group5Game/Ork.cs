@@ -16,7 +16,7 @@ namespace Group5.Game
       
       public Ork (double xIn, double yIn, double hIn, double wIn)
     	               : base(xIn, yIn, hIn, wIn)
-    	{	
+    	{
     	}
     	
     }
