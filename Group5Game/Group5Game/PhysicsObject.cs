@@ -7,7 +7,7 @@ namespace Group5.Game
 {
     public class PhysicsObject : GameObject
     {
-    	private double xCoord, yCoord, height, width;
+    	protected double width, height;
     	
     	public PhysicsObject (double hIn, double wIn, double xIn,
     	                        double yIn) : base(xIn, yIn)

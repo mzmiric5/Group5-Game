@@ -68,9 +68,9 @@ namespace Group5.Game
             
             // TODO: use this.Content to load your game content here
 
-            texture_dictionary.Add("default_player_texture", this.Content.Load<Texture2D>(".//textures/default_player_texture"));
-            texture_dictionary.Add("milk_texture", this.Content.Load<Texture2D>(".//textures/milk_texture"));
-            texture_dictionary.Add("ork_texture", this.Content.Load<Texture2D>(".//textures/ork_texture"));
+            texture_dictionary.Add("default_player_texture", this.Content.Load<Texture2D>(".//////textures/default_player_texture"));
+            texture_dictionary.Add("milk_texture", this.Content.Load<Texture2D>(".//////textures/milk_texture"));
+            texture_dictionary.Add("ork_texture", this.Content.Load<Texture2D>(".//////textures/ork_texture"));
 
         }
 

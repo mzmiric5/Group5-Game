@@ -7,8 +7,6 @@ namespace Group5.Game
 {
     class Weapon : Item
     {
-    	private double xCoord, yCoord, height, width;
-    	
     	public Weapon (double xIn, double yIn, double hIn, double wIn)
     	                : base(xIn, yIn, hIn, wIn)
     	{	

@@ -7,8 +7,6 @@ namespace Group5.Game
 {
     class Ork : Enemy
     {
-    	private double xCoord, yCoord, height, width;
-
         public Ork()
             : this(0.0d, 0.0d, 1.0d, 1.0d)
       {

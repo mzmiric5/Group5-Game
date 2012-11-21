@@ -8,8 +8,6 @@ namespace Group5.Game
 {
     public class Player : Actor
     {
-    	private double xCoord, yCoord, width, height;
-      
       public List<Item> inventory;
 
       public Player()

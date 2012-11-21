@@ -7,7 +7,7 @@ namespace Group5.Game
 {
     public class GameObject
     {
-    	private double xCoord, yCoord;
+    	protected double xCoord, yCoord;
     	
     	public GameObject(double xIn, double yIn)
     	{
