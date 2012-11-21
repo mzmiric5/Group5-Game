@@ -7,7 +7,7 @@ namespace Group5.Game
 {
     class Consumable : Item
     {
-        private int strength;
+        private int strength = 0;
         
         public Consumable (double xIn, double yIn, double hIn, double wIn)
     	                    : base(xIn, yIn, hIn, wIn)

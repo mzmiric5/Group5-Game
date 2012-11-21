@@ -7,7 +7,7 @@ namespace Group5.Game
 {
     class Weapon : Item
     {
-    	private int power;
+        private int power = 0;
         
         public Weapon (double xIn, double yIn, double hIn, double wIn)
     	                : base(xIn, yIn, hIn, wIn)
