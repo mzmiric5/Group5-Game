@@ -26,7 +26,8 @@ namespace Group5.Game
 
         // Data Structure
         public Player player;
-        public List<NPC> NPCs;
+        public List<Friend> friends;
+        public List<Enemy> enemies;
         public List<Item> items;
         public LevelManager levelManager;
 
@@ -50,7 +51,7 @@ namespace Group5.Game
             
             this.levelManager = new LevelManager(this);
             this.player = new Player();
-            this.levelManager.makeNPCs(this.NPCs);
+            this.levelManager.makeNPCs(this.friends, this.enemies);
             this.levelManager.makeItems(this.items);
             
             
@@ -119,9 +120,13 @@ namespace Group5.Game
             
             // draw all items in data structure
             this.player.draw(this);
-            foreach (NPC npc in this.NPCs)
+            foreach (Friend friend in this.friends)
             {
-              npc.draw();
+                friend.draw();
+            }
+            foreach (Enemy enermy in this.enemies)
+            {
+                enermy.draw();
             }
             foreach (Item item in this.items)
             {

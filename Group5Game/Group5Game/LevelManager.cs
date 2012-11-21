@@ -25,15 +25,15 @@ namespace Group5.Game
         this.game = game;
       }
       
-      public void makeNPCs(List<NPC> NPCs)
+      public void makeNPCs(List<Friend> friends, List<Enemy> enemies)
       {
         /*
         get stuff from xml file
         */
         
         // todo: change this: make stuff up for first game iteration
-        NPCs.Add(new Ork(0.0d, 1.0d, 1.0d, 1.0d));
-        NPCs.Add(new Ork(1.0d, 0.0d, 1.0d, 1.0d));
+          enemies.Add(new Ork(0.0d, 1.0d, 1.0d, 1.0d));
+          enemies.Add(new Ork(1.0d, 0.0d, 1.0d, 1.0d));
       }
       
       public void makeItems(List<Item> items)

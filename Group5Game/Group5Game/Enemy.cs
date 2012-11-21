@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Group5.Game
 {
-    class Enemy : NPC
+    public class Enemy : NPC
     {
       public Enemy (double xIn, double yIn, double hIn, double wIn)
     	               : base(xIn, yIn, hIn, wIn)
