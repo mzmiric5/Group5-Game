@@ -9,7 +9,7 @@ namespace Group5.Game
     {
     	protected double width, height;
 
-        protected bool pass_throughable;
+        protected bool pass_throughable = false;
     	
     	public PhysicsObject (double hIn, double wIn, double xIn,
     	                        double yIn) : base(xIn, yIn)
