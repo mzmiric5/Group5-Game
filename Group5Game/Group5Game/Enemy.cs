@@ -7,7 +7,9 @@ namespace Group5.Game
 {
     public class Enemy : NPC
     {
-      public Enemy (double xIn, double yIn, double hIn, double wIn)
+        public bool aggresive = false;
+        
+        public Enemy (double xIn, double yIn, double hIn, double wIn)
     	               : base(xIn, yIn, hIn, wIn)
     	{	
     	}

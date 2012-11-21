@@ -91,20 +91,31 @@ namespace Group5.Game
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            // TODO: Add your update logic here
-            
-            // add controller logic here to handle input and call methods of the character etc if required
+            // player update
             input.Update();
-            
             if (levelManager.check_victory_condition())
             {
-              // todo: change state
               Exit();
             }
+
+
+            // world update
+            foreach (Friend friend in this.friends)
+            {
+                //friend.update();
+            }
+            foreach (Enemy enermy in this.enemies)
+            {
+                //enermy.update();
+            }
+            /*foreach (Item item in this.items)
+            {
+                item.update();
+            }*/
+
 
             base.Update(gameTime);
         }
