@@ -17,7 +17,8 @@ namespace Group5.Game
 
     	public Player (double xIn, double yIn, double hIn, double wIn)
     	                : base(xIn, yIn, hIn, wIn)
-    	{	
+    	{
+            this.inventory = new List<Item>();
     	}
 
 

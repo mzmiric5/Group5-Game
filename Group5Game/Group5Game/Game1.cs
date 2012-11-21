@@ -26,13 +26,17 @@ namespace Group5.Game
 
         // Data Structure
         public Player player;
-        public List<Friend> friends = new List<Friend>();
-        public List<Enemy> enemies = new List<Enemy>();
-        public List<Item> items = new List<Item>();
+        public List<Friend> friends;
+        public List<Enemy> enemies;
+        public List<Item> items;
         public LevelManager levelManager;
 
         public Game1()
         {
+            friends = new List<Friend>();
+            enemies = new List<Enemy>();
+            items = new List<Item>();
+            
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             texture_dictionary = new Dictionary<string, Texture2D>();
