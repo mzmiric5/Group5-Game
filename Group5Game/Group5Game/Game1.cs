@@ -108,7 +108,7 @@ namespace Group5.Game
             }
             foreach (Enemy enermy in this.enemies)
             {
-                //enermy.update(this);
+                //enermy.update(this, gameTime);
             }
             /*foreach (Item item in this.items)
             {
