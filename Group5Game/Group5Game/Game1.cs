@@ -101,7 +101,6 @@ namespace Group5.Game
               Exit();
             }
 
-
             // world update
             foreach (Friend friend in this.friends)
             {
