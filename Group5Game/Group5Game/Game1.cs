@@ -104,15 +104,15 @@ namespace Group5.Game
             // world update
             foreach (Friend friend in this.friends)
             {
-                //friend.update();
+                //friend.update(this);
             }
             foreach (Enemy enermy in this.enemies)
             {
-                //enermy.update();
+                //enermy.update(this);
             }
             /*foreach (Item item in this.items)
             {
-                item.update();
+                item.update(this);
             }*/
 
 

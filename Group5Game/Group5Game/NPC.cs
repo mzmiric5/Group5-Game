@@ -17,7 +17,11 @@ namespace Group5.Game
         {
             // TODO: add draw method
         }
-    	
+
+        public Direction give_random_direction()
+        {
+            return (Direction) new Random().Next(3);
+        }
 
     }
 }
