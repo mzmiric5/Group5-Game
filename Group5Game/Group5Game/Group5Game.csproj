@@ -130,6 +130,9 @@
   <ItemGroup>
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
+    <Content Include="textures\default_player_texture.png" />
+    <Content Include="textures\milk_texture.png" />
+    <Content Include="textures\ork_texture.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\TileEngine\TileEngine.csproj">
