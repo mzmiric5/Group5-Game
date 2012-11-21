@@ -26,9 +26,9 @@ namespace Group5.Game
 
         // Data Structure
         public Player player;
-        public List<Friend> friends;
-        public List<Enemy> enemies;
-        public List<Item> items;
+        public List<Friend> friends = new List<Friend>();
+        public List<Enemy> enemies = new List<Enemy>();
+        public List<Item> items = new List<Item>();
         public LevelManager levelManager;
 
         public Game1()
@@ -69,9 +69,9 @@ namespace Group5.Game
             
             // TODO: use this.Content to load your game content here
 
-            texture_dictionary.Add("default_player_texture", this.Content.Load<Texture2D>("C:/xampp/htdocs/Dropbox/dev2012/Group5-Game/Group5Game/Group5Game/textures/default_player_texture")); //("../../../textures/default_player_texture"));
-            texture_dictionary.Add("milk_texture", this.Content.Load<Texture2D>("../../../textures/milk_texture"));
-            texture_dictionary.Add("ork_texture", this.Content.Load<Texture2D>("../../../textures/ork_texture"));
+            texture_dictionary.Add("default_player_texture", this.Content.Load<Texture2D>("textures/default_player_texture"));
+            texture_dictionary.Add("milk_texture", this.Content.Load<Texture2D>("textures/milk_texture"));
+            texture_dictionary.Add("ork_texture", this.Content.Load<Texture2D>("textures/ork_texture"));
 
         }
 

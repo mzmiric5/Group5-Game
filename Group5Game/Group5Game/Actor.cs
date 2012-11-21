@@ -14,7 +14,7 @@ namespace Group5.Game
     	{	
     	}
 
-        protected enum Direction { Up, Down, Left, Right };
+        public enum Direction { Up, Down, Left, Right };
 
         public void move(Direction direction, int distance)
         {

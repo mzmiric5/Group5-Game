@@ -52,7 +52,7 @@ namespace Group5.Game
         bool player_has_milk = false;
         foreach (Item item in game.player.inventory)
         {
-            if (item.GetType() == typeof(Milk))
+            if (item is Milk)
             {
                 player_has_milk = true;
             }
