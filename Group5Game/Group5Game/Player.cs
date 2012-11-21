@@ -26,6 +26,17 @@ namespace Group5.Game
         {
             game.spriteBatch.Draw(game.texture_dictionary["default_player_texture"], new Rectangle(Convert.ToInt32(xCoord), Convert.ToInt32(yCoord), Convert.ToInt32(width), Convert.ToInt32(height)), Color.White);
         }
+
+          public void collect_item(Item item)
+          {
+              this.inventory.Add(item);
+          }
+
+
+        public void drop_item(int item_index)
+        {
+            this.inventory.RemoveAt(item_index);
+        }
     	
     }
 }

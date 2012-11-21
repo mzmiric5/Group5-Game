@@ -7,9 +7,16 @@ namespace Group5.Game
 {
     class Armour : Item
     {
-    	public Armour (double xIn, double yIn, double hIn, double wIn)
+        protected int strength;
+        
+        public Armour (double xIn, double yIn, double hIn, double wIn)
     	                : base(xIn, yIn, hIn, wIn)
     	{	
     	}
+
+        public int returnStrength()
+        {
+            return this.strength;
+        }
     }
 }

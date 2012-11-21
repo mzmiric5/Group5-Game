@@ -7,7 +7,8 @@ namespace Group5.Game
 {
     public class Actor : PhysicsObject
     {
-
+        protected int health, maxHealth;
+        protected Direction orientation;
         
         public Actor (double xIn, double yIn, double hIn, double wIn)
     	               : base(xIn, yIn, hIn, wIn)
@@ -35,6 +36,28 @@ namespace Group5.Game
             {
                 this.xCoord -= distance;
             }
+        }
+
+        public void loseHealth(int damage)
+        {
+            this.health -= damage;
+        }
+        
+        public void gainHealth(int heal)
+        {
+            if (health + heal > maxHealth)
+            {
+                this.health = maxHealth;
+            }
+            else
+            {
+                this.health += heal;
+            }
+        }
+        
+        public int returnHealth()
+        {
+            return this.health;
         }
 
     	

@@ -7,9 +7,16 @@ namespace Group5.Game
 {
     class Weapon : Item
     {
-    	public Weapon (double xIn, double yIn, double hIn, double wIn)
+    	private int power;
+        
+        public Weapon (double xIn, double yIn, double hIn, double wIn)
     	                : base(xIn, yIn, hIn, wIn)
     	{	
     	}
+
+        public int returnPower()
+        {
+            return this.power;
+        }
     }
 }
