@@ -22,7 +22,7 @@ namespace Group5.Game
         }
 
 
-        new public void draw()
+        override public void draw()
         {
             // TODO: add draw method
         }
@@ -43,7 +43,7 @@ namespace Group5.Game
             return false;
         }
 
-        public void calculate_movement(Game1 game)
+        virtual public void calculate_movement(Game1 game)
         {
             this.move(this.give_random_direction(), this.movement_magnitude);
         }

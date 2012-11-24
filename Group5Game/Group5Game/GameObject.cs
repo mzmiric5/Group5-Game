@@ -25,7 +25,7 @@ namespace Group5.Game
     		return yCoord;
     	}
 
-        public void draw()
+        virtual public void draw()
         {
         }
 

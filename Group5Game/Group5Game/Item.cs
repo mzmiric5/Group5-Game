@@ -13,7 +13,7 @@ namespace Group5.Game
     	}
 
 
-        new public void draw()
+        override public void draw()
         {
             // TODO: add draw method
         }

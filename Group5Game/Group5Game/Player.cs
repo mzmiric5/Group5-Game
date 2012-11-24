@@ -22,7 +22,7 @@ namespace Group5.Game
     	}
 
 
-        public void draw(Game1 game)
+        override public void draw(Game1 game)
         {
             game.spriteBatch.Draw(game.texture_dictionary["default_player_texture"], new Rectangle(Convert.ToInt32(xCoord), Convert.ToInt32(yCoord), Convert.ToInt32(width), Convert.ToInt32(height)), Color.White);
         }

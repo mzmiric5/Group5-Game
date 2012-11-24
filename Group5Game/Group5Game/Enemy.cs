@@ -23,7 +23,7 @@ namespace Group5.Game
             }
         }
 
-        new public void calculate_movement(Game1 game)
+        override public void calculate_movement(Game1 game)
         {
             bool has_moved = false;
             if (this.aggresive == true)
