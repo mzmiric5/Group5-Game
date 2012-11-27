@@ -97,6 +97,9 @@ namespace Group5.Game
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
+				
+			if (/* InputState.CurrentState == attack */)
+				player.attack(enemies);
 
             // player update
             input.Update();

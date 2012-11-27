@@ -7,8 +7,9 @@ namespace Group5.Game
 {
     public class Actor : PhysicsObject
     {
-        protected int health, maxHealth;
+        protected int health, maxHealth, attackDamage;
         protected Direction orientation;
+		protected Weapon currentWeapon;
         
         public Actor (double xIn, double yIn, double hIn, double wIn)
     	               : base(xIn, yIn, hIn, wIn)
@@ -59,6 +60,23 @@ namespace Group5.Game
         {
             return this.health;
         }
+		
+		public void attack(List<Actor> targets)
+		{
+			// Attack animation
+			int yDist, xDist;
+			
+			foreach (Actor target in targets)
+			{
+				xDist = Math.Pow((target.returnX() - xCoord), 2);
+				yDist = Math.Pow((target.returnY() - yCoord), 2);
+				if (Math.Sqrt(xDist + yDist) <= 16)
+					if (orientation == UP && target.returnY() - yCoord >= 0 || orientation == DOWN && target.returnY() - yCoord <= 0
+						|| orientation == LEFT && target.returnX() - xCoord <= 0 || orientation == RIGHT && target.returnX() - xCoord >= 0)
+						target.loseHealth(attackDamage);
+			}
+		}
+			
 
     	
     }
