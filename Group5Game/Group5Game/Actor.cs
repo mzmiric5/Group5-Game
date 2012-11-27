@@ -7,6 +7,8 @@ namespace Group5.Game
 {
     public class Actor : PhysicsObject
     {
+        public enum Direction { Up, Down, Left, Right };
+        
         protected int health, maxHealth, attackDamage;
         protected Direction orientation;
 		protected Weapon currentWeapon;
@@ -15,8 +17,6 @@ namespace Group5.Game
     	               : base(xIn, yIn, hIn, wIn)
     	{	
     	}
-
-        public enum Direction { Up, Down, Left, Right };
 
         public void move(Direction direction, int distance)
         {
@@ -68,11 +68,11 @@ namespace Group5.Game
 			
 			foreach (Actor target in targets)
 			{
-				xDist = Math.Pow((target.returnX() - xCoord), 2);
-				yDist = Math.Pow((target.returnY() - yCoord), 2);
+				xDist = (int)Math.Pow((target.returnX() - xCoord), 2);
+				yDist = (int)Math.Pow((target.returnY() - yCoord), 2);
 				if (Math.Sqrt(xDist + yDist) <= 16)
-					if (orientation == UP && target.returnY() - yCoord >= 0 || orientation == DOWN && target.returnY() - yCoord <= 0
-						|| orientation == LEFT && target.returnX() - xCoord <= 0 || orientation == RIGHT && target.returnX() - xCoord >= 0)
+					if (orientation == Direction.Up && target.returnY() - yCoord >= 0 || orientation == Direction.Down && target.returnY() - yCoord <= 0
+						|| orientation == Direction.Left && target.returnX() - xCoord <= 0 || orientation == Direction.Right && target.returnX() - xCoord >= 0)
 						target.loseHealth(attackDamage);
 			}
 		}

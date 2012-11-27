@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Group5.Game
 {
-    class Weapon : Item
+    public class Weapon : Item
     {
         private int power = 0;
         
