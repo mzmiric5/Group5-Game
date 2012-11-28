@@ -23,11 +23,11 @@ namespace Group5.Game
             // TODO: add collision detection!!!
             if (direction == Direction.Up)
             {
-                this.yCoord += distance;
+                this.yCoord -= distance;
             }
             else if (direction == Direction.Down)
             {
-                this.yCoord -= distance;
+                this.yCoord += distance;
             }
             else if (direction == Direction.Right)
             {

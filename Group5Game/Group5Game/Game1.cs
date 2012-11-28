@@ -101,12 +101,13 @@ namespace Group5.Game
 			/*if ( InputState.CurrentState == attack )
 				player.attack(enemies);*/
 
-            // player update
-            input.Update();
             if (levelManager.check_victory_condition())
             {
-              Exit();
+                Exit();
             }
+
+            // player update
+            this.player.update(this, gameTime);
 
             // world update
             foreach (Friend friend in this.friends)

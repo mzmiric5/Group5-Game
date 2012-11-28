@@ -21,6 +21,35 @@ namespace Group5.Game
             this.inventory = new List<Item>();
     	}
 
+        private TimeSpan time_since_last_movement = new TimeSpan(0);
+
+        public void update(Game1 game, GameTime gameTime)
+        {
+            this.time_since_last_movement += gameTime.ElapsedGameTime;
+
+            if (this.time_since_last_movement.Milliseconds >= 100)
+            {
+                this.time_since_last_movement -= new TimeSpan(0, 0, 0, 0, 100);
+                Game1.input.Update();
+
+                if (Game1.input.IsUpAction(null) == true)
+                {
+                    this.move(Direction.Up, 32);
+                }
+                else if (Game1.input.IsDownAction(null) == true)
+                {
+                    this.move(Direction.Down, 32);
+                }
+                else if (Game1.input.IsLeftAction(null) == true)
+                {
+                    this.move(Direction.Left, 32);
+                }
+                else if (Game1.input.IsRightAction(null) == true)
+                {
+                    this.move(Direction.Right, 32);
+                }
+            }
+        }
 
         public void draw(Game1 game)
         {
