@@ -21,6 +21,7 @@ namespace Group5.Game
         {
             this.inventory = new List<Item>();
             this.set_texture_key(Player.texture_key);
+            this.set_movement_distance(32);
         }
 
         private TimeSpan time_since_last_movement = new TimeSpan(0);
@@ -36,19 +37,19 @@ namespace Group5.Game
 
                 if (Game1.input.IsUpAction(null) == true)
                 {
-                    this.move(Direction.Up, 32);
+                    this.move(Direction.Up);
                 }
                 else if (Game1.input.IsDownAction(null) == true)
                 {
-                    this.move(Direction.Down, 32);
+                    this.move(Direction.Down);
                 }
                 else if (Game1.input.IsLeftAction(null) == true)
                 {
-                    this.move(Direction.Left, 32);
+                    this.move(Direction.Left);
                 }
                 else if (Game1.input.IsRightAction(null) == true)
                 {
-                    this.move(Direction.Right, 32);
+                    this.move(Direction.Right);
                 }
             }
         }

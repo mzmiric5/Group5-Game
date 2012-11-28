@@ -10,10 +10,16 @@ namespace Group5.Game
         protected int health, maxHealth, attackDamage;
         public enum Direction { Up, Down, Left, Right };
         protected Direction orientation;
+        private int movement_distance;
 
         public Actor(double xIn, double yIn, double hIn, double wIn)
             : base(xIn, yIn, hIn, wIn)
         {
+        }
+
+        public void move(Direction direction)
+        {
+            this.move(direction, this.get_movement_distance());
         }
 
         public void move(Direction direction, int distance)
@@ -35,6 +41,16 @@ namespace Group5.Game
             {
                 this.xCoord -= distance;
             }
+        }
+
+        public int get_movement_distance()
+        {
+            return this.movement_distance;
+        }
+
+        public void set_movement_distance(int new_movement_distance)
+        {
+            this.movement_distance = new_movement_distance;
         }
 
         public void loseHealth(int damage)
