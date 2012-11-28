@@ -14,7 +14,7 @@ namespace Group5.Game
         protected int sight = 128;
 
         private int cumlative_movement_decrementor;
-        
+
         public NPC(double xIn, double yIn, double hIn, double wIn)
             : base(xIn, yIn, hIn, wIn)
         {
@@ -23,7 +23,7 @@ namespace Group5.Game
 
         public Direction give_random_direction()
         {
-            return (Direction) new Random().Next(3);
+            return (Direction)new Random().Next(3);
         }
 
         public bool check_if_time_to_move(Game1 game, GameTime gameTime)

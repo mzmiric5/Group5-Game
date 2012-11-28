@@ -51,7 +51,7 @@ namespace Group5.Game
         {
             Position += offset;
         }
-        
+
         public static bool ObjectIsVisible(Rectangle bounds)
         {
             return (ViewPort.Intersects(bounds));

@@ -8,13 +8,13 @@ namespace Group5.Game
     public class Actor : PhysicsObject
     {
         protected int health, maxHealth, attackDamage;
-	public enum Direction{Up, Down, Left, Right};
-	protected Direction orientation;
-    	
-    	public Actor (double xIn, double yIn, double hIn, double wIn)
-    	               : base(xIn, yIn, hIn, wIn)
-    	{
-    	}
+        public enum Direction { Up, Down, Left, Right };
+        protected Direction orientation;
+
+        public Actor(double xIn, double yIn, double hIn, double wIn)
+            : base(xIn, yIn, hIn, wIn)
+        {
+        }
 
         public void move(Direction direction, int distance)
         {
@@ -41,7 +41,7 @@ namespace Group5.Game
         {
             this.health -= damage;
         }
-        
+
         public void gainHealth(int heal)
         {
             if (health + heal > maxHealth)
@@ -53,29 +53,29 @@ namespace Group5.Game
                 this.health += heal;
             }
         }
-        
+
         public int returnHealth()
         {
             return this.health;
         }
-		
-		public void attack(List<Actor> targets)
-		{
-			// Attack animation
-			int yDist, xDist;
-			
-			foreach (Actor target in targets)
-			{
-				xDist = (int)Math.Pow((target.returnX() - xCoord), 2);
-				yDist = (int)Math.Pow((target.returnY() - yCoord), 2);
-				if (Math.Sqrt(xDist + yDist) <= 16)
-					if (orientation == Direction.Up && target.returnY() - yCoord >= 0 || orientation == Direction.Down && target.returnY() - yCoord <= 0
-						|| orientation == Direction.Left && target.returnX() - xCoord <= 0 || orientation == Direction.Right && target.returnX() - xCoord >= 0)
-						target.loseHealth(attackDamage);
-			}
-		}
-			
 
-    	
+        public void attack(List<Actor> targets)
+        {
+            // Attack animation
+            int yDist, xDist;
+
+            foreach (Actor target in targets)
+            {
+                xDist = (int)Math.Pow((target.returnX() - xCoord), 2);
+                yDist = (int)Math.Pow((target.returnY() - yCoord), 2);
+                if (Math.Sqrt(xDist + yDist) <= 16)
+                    if (orientation == Direction.Up && target.returnY() - yCoord >= 0 || orientation == Direction.Down && target.returnY() - yCoord <= 0
+                        || orientation == Direction.Left && target.returnX() - xCoord <= 0 || orientation == Direction.Right && target.returnX() - xCoord >= 0)
+                        target.loseHealth(attackDamage);
+            }
+        }
+
+
+
     }
 }

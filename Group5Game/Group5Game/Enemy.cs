@@ -10,10 +10,10 @@ namespace Group5.Game
     {
         public bool aggresive = false;
 
-        public Enemy (double xIn, double yIn, double hIn, double wIn)
-    	               : base(xIn, yIn, hIn, wIn)
-    	{
-    	}
+        public Enemy(double xIn, double yIn, double hIn, double wIn)
+            : base(xIn, yIn, hIn, wIn)
+        {
+        }
 
         public void update(Game1 game, GameTime gameTime)
         {
@@ -58,6 +58,6 @@ namespace Group5.Game
                 this.move(this.give_random_direction(), this.movement_magnitude);
             }
         }
-    	
+
     }
 }

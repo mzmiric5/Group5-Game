@@ -42,7 +42,7 @@ namespace Bot
             CurrentMouseState = new MouseState();
             LastKeyboardState = new KeyboardState();
             LastGamePadStates = new GamePadState[MaxInputs];
-            LastMouseState = new MouseState(); 
+            LastMouseState = new MouseState();
             GamePadWasConnected = new bool[MaxInputs];
         }
 
@@ -133,7 +133,7 @@ namespace Bot
         public bool IsMenuUp(PlayerIndex? controllingPlayer)
         {
             PlayerIndex playerIndex;
-            return IsNewKeyPress(Keys.Up, controllingPlayer, out playerIndex) || 
+            return IsNewKeyPress(Keys.Up, controllingPlayer, out playerIndex) ||
                    IsNewKeyPress(Keys.W, controllingPlayer, out playerIndex) ||
                    IsNewBtnPress(Buttons.DPadUp, controllingPlayer, out playerIndex) ||
                    IsNewBtnPress(Buttons.LeftThumbstickUp, controllingPlayer, out playerIndex);

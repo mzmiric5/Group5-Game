@@ -7,9 +7,9 @@ namespace Group5.Game
 {
     public class Item : PhysicsObject
     {
-    	public Item (double xIn, double yIn, double hIn, double wIn)
-    	              : base(xIn, yIn, hIn, wIn)
-    	{	
-    	}
+        public Item(double xIn, double yIn, double hIn, double wIn)
+            : base(xIn, yIn, hIn, wIn)
+        {
+        }
     }
 }

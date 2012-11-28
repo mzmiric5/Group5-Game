@@ -8,20 +8,20 @@ namespace Group5.Game
 {
     public class Player : Actor
     {
-      public List<Item> inventory;
-      private static String texture_key = "default_player_texture";
+        public List<Item> inventory;
+        private static String texture_key = "default_player_texture";
 
-      public Player()
-          : this(256.0d, 256.0d, 32.0d, 32.0d)
-      {
-      }
+        public Player()
+            : this(256.0d, 256.0d, 32.0d, 32.0d)
+        {
+        }
 
-    	public Player (double xIn, double yIn, double hIn, double wIn)
-    	                : base(xIn, yIn, hIn, wIn)
-    	{
+        public Player(double xIn, double yIn, double hIn, double wIn)
+            : base(xIn, yIn, hIn, wIn)
+        {
             this.inventory = new List<Item>();
             this.set_texture_key(Player.texture_key);
-    	}
+        }
 
         private TimeSpan time_since_last_movement = new TimeSpan(0);
 
@@ -53,10 +53,10 @@ namespace Group5.Game
             }
         }
 
-          public void collect_item(Item item)
-          {
-              this.inventory.Add(item);
-          }
+        public void collect_item(Item item)
+        {
+            this.inventory.Add(item);
+        }
 
 
         public void drop_item(int item_index)

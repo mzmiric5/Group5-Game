@@ -36,7 +36,7 @@ namespace Group5.Game
             friends = new List<Friend>();
             enemies = new List<Enemy>();
             items = new List<Item>();
-            
+
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             texture_dictionary = new Dictionary<string, Texture2D>();
@@ -51,14 +51,14 @@ namespace Group5.Game
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            
-            
+
+
             this.levelManager = new LevelManager(this);
             this.player = new Player();
             this.levelManager.makeNPCs(this.friends, this.enemies);
             this.levelManager.makeItems(this.items);
-            
-            
+
+
             base.Initialize();
         }
 
@@ -70,7 +70,7 @@ namespace Group5.Game
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            
+
             // TODO: use this.Content to load your game content here
 
             texture_dictionary.Add("default_player_texture", this.Content.Load<Texture2D>("textures/default_player_texture"));
@@ -97,9 +97,9 @@ namespace Group5.Game
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
-				
-			/*if ( InputState.CurrentState == attack )
-				player.attack(enemies);*/
+
+            /*if ( InputState.CurrentState == attack )
+                player.attack(enemies);*/
 
             if (levelManager.check_victory_condition())
             {
@@ -135,7 +135,7 @@ namespace Group5.Game
         {
             GraphicsDevice.Clear(Color.Magenta);
             spriteBatch.Begin();
-            
+
             // draw all items in data structure
             this.player.draw(this);
             foreach (Friend friend in this.friends)

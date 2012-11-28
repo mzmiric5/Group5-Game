@@ -7,10 +7,10 @@ namespace Group5.Game
 {
     public class Friend : NPC
     {
-    	public Friend (double xIn, double yIn, double hIn, double wIn)
-    	                : base(xIn, yIn, hIn, wIn)
-    	{	
-    	}
-    	
+        public Friend(double xIn, double yIn, double hIn, double wIn)
+            : base(xIn, yIn, hIn, wIn)
+        {
+        }
+
     }
 }

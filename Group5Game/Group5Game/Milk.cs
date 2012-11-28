@@ -10,15 +10,15 @@ namespace Group5.Game
     {
         private static String texture_key = "milk_texture";
 
-        public Milk (double xIn, double yIn, double hIn, double wIn)
-    	              : base(xIn, yIn, hIn, wIn)
-    	{
+        public Milk(double xIn, double yIn, double hIn, double wIn)
+            : base(xIn, yIn, hIn, wIn)
+        {
             this.set_texture_key(Milk.texture_key);
-    	}
-      
-      public void pick_up(Player player)
-      {
-        player.inventory.Add(this);
-      }
+        }
+
+        public void pick_up(Player player)
+        {
+            player.inventory.Add(this);
+        }
     }
 }
