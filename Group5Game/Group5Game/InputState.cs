@@ -133,7 +133,9 @@ namespace Bot
         public bool IsMenuUp(PlayerIndex? controllingPlayer)
         {
             PlayerIndex playerIndex;
-            return IsNewKeyPress(Keys.Up, controllingPlayer, out playerIndex) || IsNewBtnPress(Buttons.DPadUp, controllingPlayer, out playerIndex) ||
+            return IsNewKeyPress(Keys.Up, controllingPlayer, out playerIndex) || 
+                   IsNewKeyPress(Keys.W, controllingPlayer, out playerIndex) ||
+                   IsNewBtnPress(Buttons.DPadUp, controllingPlayer, out playerIndex) ||
                    IsNewBtnPress(Buttons.LeftThumbstickUp, controllingPlayer, out playerIndex);
         }
 
@@ -177,6 +179,16 @@ namespace Bot
                    IsNewKeyPress(Keys.Right, controllingPlayer, out playerIndex) ||
                    IsNewBtnPress(Buttons.DPadRight, controllingPlayer, out playerIndex) ||
                    IsNewBtnPress(Buttons.LeftThumbstickRight, controllingPlayer, out playerIndex);
+        }
+
+        public bool IsUpAction(PlayerIndex? controllingPlayer)
+        {
+            return IsMenuUp(controllingPlayer);
+        }
+
+        public bool IsDownAction(PlayerIndex? controllingPlayer)
+        {
+            return IsMenuDown(controllingPlayer);
         }
 
         // 360
