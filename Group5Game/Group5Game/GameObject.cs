@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 
 namespace Group5.Game
 {
@@ -19,15 +20,10 @@ namespace Group5.Game
     	{
     		return xCoord;
     	}
-    	
-    	public double returnY()
-    	{
-    		return yCoord;
-    	}
 
-        virtual public void draw()
+        public double returnY()
         {
+            return yCoord;
         }
-
     }
 }

@@ -11,12 +11,5 @@ namespace Group5.Game
     	              : base(xIn, yIn, hIn, wIn)
     	{	
     	}
-
-
-        override public void draw()
-        {
-            // TODO: add draw method
-        }
-    	
     }
 }

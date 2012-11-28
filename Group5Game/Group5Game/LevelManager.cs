@@ -32,8 +32,8 @@ namespace Group5.Game
         */
         
         // todo: change this: make stuff up for first game iteration
-          enemies.Add(new Ork(0.0d, 1.0d, 1.0d, 1.0d));
-          enemies.Add(new Ork(1.0d, 0.0d, 1.0d, 1.0d));
+          enemies.Add(new Ork(0.0d, 32.0d, 32.0d, 32.0d));
+          enemies.Add(new Ork(32.0d, 0.0d, 32.0d, 32.0d));
       }
       
       public void makeItems(List<Item> items)
@@ -43,7 +43,7 @@ namespace Group5.Game
         */
         
         // todo: change this: for first game iteration make stuff up
-        items.Add(new Milk(10.0d, 10.0d, 1.0d, 1.0d));
+          items.Add(new Milk(64.0d, 64.0d, 32.0d, 32.0d));
       }
       
       public bool check_victory_condition()

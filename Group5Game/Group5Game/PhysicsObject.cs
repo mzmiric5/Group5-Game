@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 
 namespace Group5.Game
 {
     public class PhysicsObject : GameObject
     {
     	protected double width, height;
+        private String texture_key;
 
         protected bool pass_throughable = false;
     	
@@ -37,6 +39,15 @@ namespace Group5.Game
         this.pass_throughable = can_pass_through;
     }
 
+    virtual public void draw(Game1 game)
+    {
+        game.spriteBatch.Draw(game.texture_dictionary[this.texture_key], new Rectangle(Convert.ToInt32(xCoord), Convert.ToInt32(yCoord), Convert.ToInt32(width), Convert.ToInt32(height)), Color.White);
+    }
+
+    protected void set_texture_key(String new_texture_key)
+    {
+        this.texture_key = new_texture_key;
+    }
 
     }
 }

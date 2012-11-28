@@ -140,15 +140,15 @@ namespace Group5.Game
             this.player.draw(this);
             foreach (Friend friend in this.friends)
             {
-                friend.draw();
+                friend.draw(this);
             }
             foreach (Enemy enermy in this.enemies)
             {
-                enermy.draw();
+                enermy.draw(this);
             }
             foreach (Item item in this.items)
             {
-              item.draw();
+                item.draw(this);
             }
 
             spriteBatch.End();

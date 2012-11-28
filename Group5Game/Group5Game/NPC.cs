@@ -21,12 +21,6 @@ namespace Group5.Game
             cumlative_movement_decrementor = this.get_movement_frequency();
         }
 
-
-        override public void draw()
-        {
-            // TODO: add draw method
-        }
-
         public Direction give_random_direction()
         {
             return (Direction) new Random().Next(3);

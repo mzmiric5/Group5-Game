@@ -9,6 +9,7 @@ namespace Group5.Game
     public class Player : Actor
     {
       public List<Item> inventory;
+      private static String texture_key = "default_player_texture";
 
       public Player()
           : this(256.0d, 256.0d, 32.0d, 32.0d)
@@ -19,6 +20,7 @@ namespace Group5.Game
     	                : base(xIn, yIn, hIn, wIn)
     	{
             this.inventory = new List<Item>();
+            this.set_texture_key(Player.texture_key);
     	}
 
         private TimeSpan time_since_last_movement = new TimeSpan(0);
@@ -49,11 +51,6 @@ namespace Group5.Game
                     this.move(Direction.Right, 32);
                 }
             }
-        }
-
-        public void draw(Game1 game)
-        {
-            game.spriteBatch.Draw(game.texture_dictionary["default_player_texture"], new Rectangle(Convert.ToInt32(xCoord), Convert.ToInt32(yCoord), Convert.ToInt32(width), Convert.ToInt32(height)), Color.White);
         }
 
           public void collect_item(Item item)
