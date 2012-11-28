@@ -11,7 +11,7 @@ namespace Group5.Game
       public List<Item> inventory;
 
       public Player()
-          : this(0.0d, 0.0d, 0.0d, 0.0d)
+          : this(256.0d, 256.0d, 32.0d, 32.0d)
       {
       }
 

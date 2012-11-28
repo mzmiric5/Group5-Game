@@ -11,8 +11,7 @@ namespace Group5.Game
 
         protected bool pass_throughable = false;
     	
-    	public PhysicsObject (double hIn, double wIn, double xIn,
-    	                        double yIn) : base(xIn, yIn)
+    	public PhysicsObject (double xIn, double yIn, double hIn, double wIn) : base(xIn, yIn)
     	{
     		height = hIn;
     		width = wIn;
