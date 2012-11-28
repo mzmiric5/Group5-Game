@@ -33,10 +33,16 @@ namespace Group5.Game
     class Armour : Item
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
     	private double xCoord, yCoord, height, width;
 	private int strength;
     	
     	public Armour (double xIn, double yIn, double hIn, double wIn)
+=======
+        protected int strength = 0;
+        
+        public Armour (double xIn, double yIn, double hIn, double wIn)
+>>>>>>> origin/dev
 =======
         protected int strength = 0;
         
@@ -47,15 +53,21 @@ namespace Group5.Game
     	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public int returnStrength()
 	{
 		return strength;
 	}
 =======
+=======
+>>>>>>> origin/dev
         public int returnStrength()
         {
             return this.strength;
         }
+<<<<<<< HEAD
+>>>>>>> origin/dev
+=======
 >>>>>>> origin/dev
     }
 }

@@ -38,6 +38,7 @@ namespace Group5.Game
     class Consumable : Item
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
     	private double xCoord, yCoord, height, width;
 	private int stength;
     	
@@ -47,10 +48,16 @@ namespace Group5.Game
         
         public Consumable (double xIn, double yIn, double hIn, double wIn)
 >>>>>>> origin/dev
+=======
+        private int strength = 0;
+        
+        public Consumable (double xIn, double yIn, double hIn, double wIn)
+>>>>>>> origin/dev
     	                    : base(xIn, yIn, hIn, wIn)
     	{	
     	}
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	public int returnStrength()
 	{
@@ -62,6 +69,8 @@ namespace Group5.Game
 		character.heal(strength);
 	}
 =======
+=======
+>>>>>>> origin/dev
         public int returnStrength()
         {
             return this.strength;
@@ -71,6 +80,9 @@ namespace Group5.Game
         {
             player.gainHealth(strength);
         }
+<<<<<<< HEAD
+>>>>>>> origin/dev
+=======
 >>>>>>> origin/dev
     }
 }

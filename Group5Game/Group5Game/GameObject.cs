@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,10 +37,13 @@ namespace Group5Game
 =======
 =======
 >>>>>>> origin/dev
+=======
+>>>>>>> origin/dev
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 namespace Group5Game
@@ -48,6 +52,8 @@ namespace Group5Game
     {
     	private double xCoord, yCoord;
 =======
+=======
+>>>>>>> origin/dev
 using Microsoft.Xna.Framework;
 
 namespace Group5.Game
@@ -55,6 +61,9 @@ namespace Group5.Game
     public class GameObject
     {
     	protected double xCoord, yCoord;
+<<<<<<< HEAD
+>>>>>>> origin/dev
+=======
 >>>>>>> origin/dev
     	
     	public GameObject(double xIn, double yIn)
@@ -67,6 +76,7 @@ namespace Group5.Game
     	{
     		return xCoord;
     	}
+<<<<<<< HEAD
 <<<<<<< HEAD
     	
     	public double returnY()
@@ -82,6 +92,8 @@ namespace Group5.Game
 }
 >>>>>>> rollback to before dev branch was created
 =======
+=======
+>>>>>>> origin/dev
 
         public double returnY()
         {
@@ -89,4 +101,7 @@ namespace Group5.Game
         }
     }
 }
+<<<<<<< HEAD
+>>>>>>> origin/dev
+=======
 >>>>>>> origin/dev

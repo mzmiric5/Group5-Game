@@ -50,6 +50,7 @@ namespace Group5.Game
     public class Actor : PhysicsObject
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
     	private double xCoord, yCoord, height, width;
 	private int health, maxHealth;
 	private enum Direction{up, right, down, left};
@@ -57,6 +58,8 @@ namespace Group5.Game
     	
     	public Actor (double xIn, double yIn, double hIn, double wIn, int orientIn)
 =======
+=======
+>>>>>>> origin/dev
         public enum Direction { Up, Down, Left, Right };
         
         protected int health, maxHealth, attackDamage;
@@ -64,12 +67,16 @@ namespace Group5.Game
 		protected Weapon currentWeapon;
         
         public Actor (double xIn, double yIn, double hIn, double wIn)
+<<<<<<< HEAD
+>>>>>>> origin/dev
+=======
 >>>>>>> origin/dev
     	               : base(xIn, yIn, hIn, wIn)
     	{
 		orientation = orientIn;
     	}
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	public void loseHealth(int damage)
 	{
@@ -89,6 +96,8 @@ namespace Group5.Game
 		return health;
 	}
 =======
+=======
+>>>>>>> origin/dev
         public void move(Direction direction, int distance)
         {
             // TODO: add collision detection!!!
@@ -149,6 +158,9 @@ namespace Group5.Game
 		}
 			
 
+<<<<<<< HEAD
+>>>>>>> origin/dev
+=======
 >>>>>>> origin/dev
     	
     }

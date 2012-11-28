@@ -41,6 +41,7 @@ namespace Group5.Game
     public class Player : Actor
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
     	private double xCoord, yCoord, height, width;
 	private List<Item> Inventory = new List<Item>(20);
     	
@@ -60,6 +61,8 @@ namespace Group5.Game
 		Inventory[item] = null;
 	}
 =======
+=======
+>>>>>>> origin/dev
       public List<Item> inventory;
       private static String texture_key = "default_player_texture";
 
@@ -115,6 +118,9 @@ namespace Group5.Game
         {
             this.inventory.RemoveAt(item_index);
         }
+<<<<<<< HEAD
+>>>>>>> origin/dev
+=======
 >>>>>>> origin/dev
     	
     }
