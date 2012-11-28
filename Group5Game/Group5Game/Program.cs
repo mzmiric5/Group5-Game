@@ -1,6 +1,6 @@
 using System;
 
-namespace Group5Game
+namespace Group5.Game
 {
 #if WINDOWS || XBOX
     static class Program

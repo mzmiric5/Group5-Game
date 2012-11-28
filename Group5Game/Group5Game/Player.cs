@@ -34,11 +34,13 @@ namespace Group5Game
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 
-namespace Group5Game
+namespace Group5.Game
 {
-    class Player : Actor
+    public class Player : Actor
     {
+<<<<<<< HEAD
     	private double xCoord, yCoord, height, width;
 	private List<Item> Inventory = new List<Item>(20);
     	
@@ -57,6 +59,63 @@ namespace Group5Game
 	{
 		Inventory[item] = null;
 	}
+=======
+      public List<Item> inventory;
+      private static String texture_key = "default_player_texture";
+
+      public Player()
+          : this(256.0d, 256.0d, 32.0d, 32.0d)
+      {
+      }
+
+    	public Player (double xIn, double yIn, double hIn, double wIn)
+    	                : base(xIn, yIn, hIn, wIn)
+    	{
+            this.inventory = new List<Item>();
+            this.set_texture_key(Player.texture_key);
+    	}
+
+        private TimeSpan time_since_last_movement = new TimeSpan(0);
+
+        public void update(Game1 game, GameTime gameTime)
+        {
+            this.time_since_last_movement += gameTime.ElapsedGameTime;
+
+            if (this.time_since_last_movement.Milliseconds >= 100)
+            {
+                this.time_since_last_movement -= new TimeSpan(0, 0, 0, 0, 100);
+                Game1.input.Update();
+
+                if (Game1.input.IsUpAction(null) == true)
+                {
+                    this.move(Direction.Up, 32);
+                }
+                else if (Game1.input.IsDownAction(null) == true)
+                {
+                    this.move(Direction.Down, 32);
+                }
+                else if (Game1.input.IsLeftAction(null) == true)
+                {
+                    this.move(Direction.Left, 32);
+                }
+                else if (Game1.input.IsRightAction(null) == true)
+                {
+                    this.move(Direction.Right, 32);
+                }
+            }
+        }
+
+          public void collect_item(Item item)
+          {
+              this.inventory.Add(item);
+          }
+
+
+        public void drop_item(int item_index)
+        {
+            this.inventory.RemoveAt(item_index);
+        }
+>>>>>>> origin/dev
     	
     }
 }

@@ -8,8 +8,9 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using Bot;
 
-namespace Group5Game
+namespace Group5.Game
 {
     /// <summary>
     /// This is the main type for your game
@@ -17,25 +18,28 @@ namespace Group5Game
     public class Game1 : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        public SpriteBatch spriteBatch;
 
+        public Dictionary<string, Texture2D> texture_dictionary;
+
+        public static InputState input = new InputState();
 
         // Data Structure
-        // -Single Character
-        public Character character;
-        // -List of NCPs
-        public List<NPC> NPCs;
-        // -List of Items
+        public Player player;
+        public List<Friend> friends;
+        public List<Enemy> enemies;
         public List<Item> items;
-        // -Level Manager
         public LevelManager levelManager;
-
-
 
         public Game1()
         {
+            friends = new List<Friend>();
+            enemies = new List<Enemy>();
+            items = new List<Item>();
+            
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            texture_dictionary = new Dictionary<string, Texture2D>();
         }
 
         /// <summary>
@@ -49,10 +53,10 @@ namespace Group5Game
             // TODO: Add your initialization logic here
             
             
-            //this.levelManager = new LevelManager();
-            //this.character = new Character();
-            //this.levelManager.makeNPCs(this.NPCs);
-            //this.levelManager.makeItems(this.items);
+            this.levelManager = new LevelManager(this);
+            this.player = new Player();
+            this.levelManager.makeNPCs(this.friends, this.enemies);
+            this.levelManager.makeItems(this.items);
             
             
             base.Initialize();
@@ -66,8 +70,13 @@ namespace Group5Game
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            
             // TODO: use this.Content to load your game content here
+
+            texture_dictionary.Add("default_player_texture", this.Content.Load<Texture2D>("textures/default_player_texture"));
+            texture_dictionary.Add("milk_texture", this.Content.Load<Texture2D>("textures/milk_texture"));
+            texture_dictionary.Add("ork_texture", this.Content.Load<Texture2D>("textures/ork_texture"));
+
         }
 
         /// <summary>
@@ -86,15 +95,34 @@ namespace Group5Game
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
+				
+			/*if ( InputState.CurrentState == attack )
+				player.attack(enemies);*/
 
-            // TODO: Add your update logic here
-            
-            // add controller logic here to handle input and call methods of the character etc if required
-            
-            
+            if (levelManager.check_victory_condition())
+            {
+                Exit();
+            }
+
+            // player update
+            this.player.update(this, gameTime);
+
+            // world update
+            foreach (Friend friend in this.friends)
+            {
+                //friend.update(this);
+            }
+            foreach (Enemy enermy in this.enemies)
+            {
+                //enermy.update(this, gameTime);
+            }
+            /*foreach (Item item in this.items)
+            {
+                item.update(this);
+            }*/
+
 
             base.Update(gameTime);
         }
@@ -105,23 +133,25 @@ namespace Group5Game
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            // TODO: Add your drawing code here
+            GraphicsDevice.Clear(Color.Magenta);
+            spriteBatch.Begin();
             
             // draw all items in data structure
-            /*
-            this.character.draw();
-            foreach (NPC npc in this.NPCs)
+            this.player.draw(this);
+            foreach (Friend friend in this.friends)
             {
-              npc.draw();
+                friend.draw(this);
+            }
+            foreach (Enemy enermy in this.enemies)
+            {
+                enermy.draw(this);
             }
             foreach (Item item in this.items)
             {
-              item.draw();
+                item.draw(this);
             }
-            */
 
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }

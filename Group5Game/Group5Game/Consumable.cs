@@ -33,18 +33,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Group5Game
+namespace Group5.Game
 {
     class Consumable : Item
     {
+<<<<<<< HEAD
     	private double xCoord, yCoord, height, width;
 	private int stength;
     	
     	public Consumable (double xIn, double yIn, double hIn, double wIn)
+=======
+        private int strength = 0;
+        
+        public Consumable (double xIn, double yIn, double hIn, double wIn)
+>>>>>>> origin/dev
     	                    : base(xIn, yIn, hIn, wIn)
     	{	
     	}
 
+<<<<<<< HEAD
 	public int returnStrength()
 	{
 		return strength;
@@ -54,6 +61,17 @@ namespace Group5Game
 	{
 		character.heal(strength);
 	}
+=======
+        public int returnStrength()
+        {
+            return this.strength;
+        }
+        
+        public void use(Player player)
+        {
+            player.gainHealth(strength);
+        }
+>>>>>>> origin/dev
     }
 }
 >>>>>>> rollback to before dev branch was created
