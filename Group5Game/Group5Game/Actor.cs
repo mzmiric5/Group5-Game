@@ -1,45 +1,3 @@
-<<<<<<< HEAD
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Group5Game
-{
-    class Actor : PhysicsObject
-    {
-    	private double xCoord, yCoord, height, width;
-	private int health, maxHealth;
-	private enum Direction{up, right, down, left};
-	private Direction orientation;
-    	
-    	public Actor (double xIn, double yIn, double hIn, double wIn, int orientIn)
-    	               : base(xIn, yIn, hIn, wIn)
-    	{
-		orientation = orientIn;
-    	}
-
-	public void loseHealth(int damage)
-	{
-		health -= damage;
-	}
-
-	public void gainHealth(int heal)
-	{
-		if(health + heal > maxHealth)
-			health = maxHealth;
-		else
-			health += heal;
-	}
-
-	public int returnHealth()
-	{
-		return health;
-	}
-    	
-    }
-}
-=======
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,55 +7,15 @@ namespace Group5.Game
 {
     public class Actor : PhysicsObject
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    	private double xCoord, yCoord, height, width;
-	private int health, maxHealth;
-	private enum Direction{up, right, down, left};
-	private Direction orientation;
-    	
-    	public Actor (double xIn, double yIn, double hIn, double wIn, int orientIn)
-=======
-=======
->>>>>>> origin/dev
-        public enum Direction { Up, Down, Left, Right };
-        
         protected int health, maxHealth, attackDamage;
-        protected Direction orientation;
-		protected Weapon currentWeapon;
-        
-        public Actor (double xIn, double yIn, double hIn, double wIn)
-<<<<<<< HEAD
->>>>>>> origin/dev
-=======
->>>>>>> origin/dev
+	public enum Direction{Up, Down, Left, Right};
+	protected Direction orientation;
+    	
+    	public Actor (double xIn, double yIn, double hIn, double wIn)
     	               : base(xIn, yIn, hIn, wIn)
     	{
-		orientation = orientIn;
     	}
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-	public void loseHealth(int damage)
-	{
-		health -= damage;
-	}
-
-	public void gainHealth(int heal)
-	{
-		if(health + heal > maxHealth)
-			health = maxHealth;
-		else
-			health += heal;
-	}
-
-	public int returnHealth()
-	{
-		return health;
-	}
-=======
-=======
->>>>>>> origin/dev
         public void move(Direction direction, int distance)
         {
             // TODO: add collision detection!!!
@@ -158,11 +76,6 @@ namespace Group5.Game
 		}
 			
 
-<<<<<<< HEAD
->>>>>>> origin/dev
-=======
->>>>>>> origin/dev
     	
     }
 }
->>>>>>> rollback to before dev branch was created
