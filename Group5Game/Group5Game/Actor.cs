@@ -27,19 +27,47 @@ namespace Group5.Game
             // TODO: add collision detection!!!
             if (direction == Direction.Up)
             {
-                this.yCoord -= distance;
+                if ((this.yCoord - distance) >= 0)
+                {
+                    this.yCoord -= distance;
+                }
+                else
+                {
+                    this.yCoord = 0;
+                }
             }
             else if (direction == Direction.Down)
             {
-                this.yCoord += distance;
+                if ((this.yCoord + this.height + distance) <= 480)
+                {
+                    this.yCoord += distance;
+                }
+                else
+                {
+                    this.yCoord = 480 - this.height;
+                }
             }
             else if (direction == Direction.Right)
             {
-                this.xCoord += distance;
+                if ((this.xCoord + this.width + distance) <= 800)
+                {
+                    this.xCoord += distance;
+                }
+                else
+                {
+                    this.xCoord = 800 - this.width;
+                }
             }
             else if (direction == Direction.Left)
             {
-                this.xCoord -= distance;
+                if ((this.xCoord - distance) >= 0)
+                {
+                    this.xCoord -= distance;
+                }
+                else
+                {
+                    this.xCoord = 0;
+                }
             }
         }
 
