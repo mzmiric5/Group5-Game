@@ -25,31 +25,63 @@ namespace Group5.Game
         }
 
         private TimeSpan time_since_last_movement = new TimeSpan(0);
+        private bool move_up_pressed = false;
+        private bool move_down_pressed = false;
+        private bool move_left_pressed = false;
+        private bool move_right_pressed = false;
 
         public void update(Game1 game, GameTime gameTime)
         {
             this.time_since_last_movement += gameTime.ElapsedGameTime;
+
+            if (Game1.input.IsUpAction(null) == true)
+            {
+                this.move_up_pressed = true;
+                this.move_down_pressed = false;
+            }
+            else if (Game1.input.IsDownAction(null) == true)
+            {
+                this.move_down_pressed = true;
+                this.move_up_pressed = false;
+            }
+
+            if (Game1.input.IsLeftAction(null) == true)
+            {
+                this.move_left_pressed = true;
+                this.move_right_pressed = false;
+            }
+            else if (Game1.input.IsRightAction(null) == true)
+            {
+                this.move_right_pressed = true;
+                this.move_left_pressed = false;
+            }
+
 
             if (this.time_since_last_movement.Milliseconds >= 100)
             {
                 this.time_since_last_movement -= new TimeSpan(0, 0, 0, 0, 100);
                 Game1.input.Update();
 
-                if (Game1.input.IsUpAction(null) == true)
+                if (this.move_up_pressed == true)
                 {
                     this.move(Direction.Up);
+                    this.move_up_pressed = false;
                 }
-                else if (Game1.input.IsDownAction(null) == true)
+                else if (this.move_down_pressed == true)
                 {
                     this.move(Direction.Down);
+                    this.move_down_pressed = false;
                 }
-                else if (Game1.input.IsLeftAction(null) == true)
+
+                if (this.move_left_pressed == true)
                 {
                     this.move(Direction.Left);
+                    this.move_left_pressed = false;
                 }
-                else if (Game1.input.IsRightAction(null) == true)
+                else if (this.move_right_pressed == true)
                 {
                     this.move(Direction.Right);
+                    this.move_right_pressed = false;
                 }
             }
         }
