@@ -26,23 +26,26 @@ namespace Bot
         public KeyboardState CurrentKeyboardState;
         public KeyboardState LastKeyboardState;
 
+        public MouseState CurrentMouseState;
+        public MouseState LastMouseState;
+
         public readonly GamePadState[] CurrentGamePadStates;
         public readonly GamePadState[] LastGamePadStates;
 
         public readonly bool[] GamePadWasConnected;
 
-        public MouseState CurrentMouseState;
-        public MouseState LastMouseState;
-
         /// <summary>Constructs a new input state.</summary>
         public InputState()
         {
             CurrentKeyboardState = new KeyboardState();
-            CurrentGamePadStates = new GamePadState[MaxInputs];
-            CurrentMouseState = new MouseState();
             LastKeyboardState = new KeyboardState();
-            LastGamePadStates = new GamePadState[MaxInputs];
+
+            CurrentMouseState = new MouseState();
             LastMouseState = new MouseState();
+
+            CurrentGamePadStates = new GamePadState[MaxInputs];
+            LastGamePadStates = new GamePadState[MaxInputs];
+
             GamePadWasConnected = new bool[MaxInputs];
         }
 
@@ -51,8 +54,10 @@ namespace Bot
         {
             LastKeyboardState = CurrentKeyboardState;
             CurrentKeyboardState = Keyboard.GetState();
+
             LastMouseState = CurrentMouseState;
             CurrentMouseState = Mouse.GetState();
+
             for (int i = 0; i < MaxInputs; i++)
             {
                 LastGamePadStates[i] = CurrentGamePadStates[i];
@@ -80,6 +85,22 @@ namespace Bot
                         IsNewKeyPress(key, PlayerIndex.Three, out playerIndex) || IsNewKeyPress(key, PlayerIndex.Four, out playerIndex));
             }
         }
+
+        public bool IsNewKeyUnpress(Keys key, PlayerIndex? controllingPlayer, out PlayerIndex playerIndex)
+        {
+            if (controllingPlayer.HasValue)
+            {
+                playerIndex = controllingPlayer.Value;
+                int i = (int)playerIndex;
+                return (CurrentKeyboardState.IsKeyUp(key) && LastKeyboardState.IsKeyDown(key));
+            }
+            else
+            {
+                return (IsNewKeyUnpress(key, PlayerIndex.One, out playerIndex) || IsNewKeyUnpress(key, PlayerIndex.Two, out playerIndex) ||
+                        IsNewKeyUnpress(key, PlayerIndex.Three, out playerIndex) || IsNewKeyUnpress(key, PlayerIndex.Four, out playerIndex));
+            }
+        }
+
 
         /// <summary>
         /// The controllingPlayer parameter specifies which player to read input for.
@@ -163,7 +184,7 @@ namespace Bot
                    IsNewBtnPress(Buttons.Start, controllingPlayer, out playerIndex);
         }
 
-        public bool IsLeftAction(PlayerIndex? controllingPlayer)
+        public bool IsNewLeftAction(PlayerIndex? controllingPlayer)
         {
             PlayerIndex playerIndex;
             return IsNewKeyPress(Keys.A, controllingPlayer, out playerIndex) ||
@@ -172,7 +193,7 @@ namespace Bot
                    IsNewBtnPress(Buttons.LeftThumbstickLeft, controllingPlayer, out playerIndex);
         }
 
-        public bool IsRightAction(PlayerIndex? controllingPlayer)
+        public bool IsNewRightAction(PlayerIndex? controllingPlayer)
         {
             PlayerIndex playerIndex;
             return IsNewKeyPress(Keys.D, controllingPlayer, out playerIndex) ||
@@ -181,14 +202,58 @@ namespace Bot
                    IsNewBtnPress(Buttons.LeftThumbstickRight, controllingPlayer, out playerIndex);
         }
 
-        public bool IsUpAction(PlayerIndex? controllingPlayer)
+        public bool IsNewUpAction(PlayerIndex? controllingPlayer)
         {
             return IsMenuUp(controllingPlayer);
         }
 
-        public bool IsDownAction(PlayerIndex? controllingPlayer)
+        public bool IsNewDownAction(PlayerIndex? controllingPlayer)
         {
             return IsMenuDown(controllingPlayer);
+        }
+
+        public bool IsNewLeftAction()
+        {
+            return IsNewLeftAction(null);
+        }
+
+        public bool IsNewRightAction()
+        {
+            return IsNewRightAction(null);
+        }
+
+        public bool IsNewUpAction()
+        {
+            return IsNewUpAction(null);
+        }
+
+        public bool IsNewDownAction()
+        {
+            return IsNewDownAction(null);
+        }
+
+        public bool IsUpAction()
+        {
+            return CurrentKeyboardState.IsKeyDown(Keys.W) ||
+                   CurrentKeyboardState.IsKeyDown(Keys.Up);
+        }
+
+        public bool IsDownAction()
+        {
+            return CurrentKeyboardState.IsKeyDown(Keys.S) ||
+                   CurrentKeyboardState.IsKeyDown(Keys.Down);
+        }
+
+        public bool IsLeftAction()
+        {
+            return CurrentKeyboardState.IsKeyDown(Keys.A) ||
+                   CurrentKeyboardState.IsKeyDown(Keys.Left);
+        }
+
+        public bool IsRightAction()
+        {
+            return CurrentKeyboardState.IsKeyDown(Keys.D) ||
+                   CurrentKeyboardState.IsKeyDown(Keys.Right);
         }
 
         // 360

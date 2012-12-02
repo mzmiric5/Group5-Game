@@ -34,23 +34,23 @@ namespace Group5.Game
         {
             this.time_since_last_movement += gameTime.ElapsedGameTime;
 
-            if (Game1.input.IsUpAction(null) == true)
+            if (Game1.input.IsUpAction() == true)
             {
                 this.move_up_pressed = true;
                 this.move_down_pressed = false;
             }
-            else if (Game1.input.IsDownAction(null) == true)
+            else if (Game1.input.IsDownAction() == true)
             {
                 this.move_down_pressed = true;
                 this.move_up_pressed = false;
             }
 
-            if (Game1.input.IsLeftAction(null) == true)
+            if (Game1.input.IsLeftAction() == true)
             {
                 this.move_left_pressed = true;
                 this.move_right_pressed = false;
             }
-            else if (Game1.input.IsRightAction(null) == true)
+            else if (Game1.input.IsRightAction() == true)
             {
                 this.move_right_pressed = true;
                 this.move_left_pressed = false;
