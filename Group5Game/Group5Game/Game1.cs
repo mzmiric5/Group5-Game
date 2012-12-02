@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Bot;
+using Group5.TileEngine;
 
 namespace Group5.Game
 {
@@ -26,12 +27,26 @@ namespace Group5.Game
         
         public LevelManager levelManager;
 
+        private World world;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
             texture_dictionary = new Dictionary<string, Texture2D>();
+
+            this.levelManager = new LevelManager(this);
+        }
+
+        public World get_world()
+        {
+            return this.world;
+        }
+
+        public void set_world(World new_world)
+        {
+            this.world = new_world;
         }
 
         /// <summary>
@@ -43,8 +58,6 @@ namespace Group5.Game
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
-            this.levelManager = new LevelManager(this);
 
             base.Initialize();
         }

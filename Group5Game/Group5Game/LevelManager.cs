@@ -17,10 +17,12 @@ namespace Group5.Game
         {
             this.game = game;
             this.current_level = new_level(this.game, 1);
+            this.game.set_world(new TileEngine.World());
+            this.game.get_world().set_tile_size(32);
         }
 
         public LevelManager(Game1 game)
-            : this(0, game)
+            : this(1, game)
         {
         }
 

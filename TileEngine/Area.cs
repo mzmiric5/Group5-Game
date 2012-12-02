@@ -8,7 +8,7 @@ namespace Group5.TileEngine
 	/// <summary>
 	/// Represents a playable area, a grid of tiles and objects.
 	/// </summary>
-    class Area
+    public class Area
     {
 		private int mWidth;
 		private int mHeight;

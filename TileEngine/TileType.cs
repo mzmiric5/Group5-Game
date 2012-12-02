@@ -4,7 +4,7 @@ namespace Group5.TileEngine
 	/// <summary>
 	/// General type and logic for a tile.
 	/// </summary>
-	enum TileType
+	public enum TileType
 	{
 		Empty,
 		Solid,

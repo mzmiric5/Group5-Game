@@ -8,7 +8,7 @@ namespace Group5.TileEngine
 	/// <summary>
 	/// Represents a single Tile in an area.
 	/// </summary>
-	class Tile
+	public class Tile
 	{
 		private const int NumLayers = 3;
 
