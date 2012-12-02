@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 
 namespace Group5.Game
 {
@@ -9,18 +10,18 @@ namespace Group5.Game
     {
         public Game1 game;
 
-        public LevelManager(Game1 game)
-            : this(0, game)
-        {
-        }
+        private Level current_level;
+        private Level previous_level;
 
         public LevelManager(int level_number, Game1 game)
         {
-            // todo: use level_number to read an xml file
-            /*
-            xml file contains information about the level which the LevelManager then handles. 
-            */
             this.game = game;
+            this.current_level = new_level(this.game, 1);
+        }
+
+        public LevelManager(Game1 game)
+            : this(0, game)
+        {
         }
 
         public Level new_level(Game1 game, int level_number)
@@ -29,6 +30,31 @@ namespace Group5.Game
             this.makeNPCs(level);
             this.makeItems(level);
             return level;
+        }
+
+        public void update(GameTime gameTime)
+        {
+            this.current_level.update(gameTime);
+        }
+
+        public Level get_current_level()
+        {
+            return this.current_level;
+        }
+
+        public void set_current_level(Level new_current_level)
+        {
+            this.current_level = new_current_level;
+        }
+
+        public Level get_previous_level()
+        {
+            return this.previous_level;
+        }
+
+        public void set_previous_level(Level new_previous_level)
+        {
+            this.previous_level = new_previous_level;
         }
 
         public void makeNPCs(Level level)
@@ -56,7 +82,7 @@ namespace Group5.Game
         {
             // todo: change this: for first game get player to pick up milk
             bool player_has_milk = false;
-            foreach (Item item in game.get_current_level().player.inventory)
+            foreach (Item item in game.levelManager.get_current_level().player.inventory)
             {
                 if (item is Milk)
                 {
@@ -64,6 +90,11 @@ namespace Group5.Game
                 }
             }
             return player_has_milk;
+        }
+
+        public void draw(GameTime gameTime)
+        {
+            this.current_level.draw();
         }
     }
 }

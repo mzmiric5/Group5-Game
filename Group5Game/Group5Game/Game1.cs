@@ -26,9 +26,6 @@ namespace Group5.Game
         
         public LevelManager levelManager;
 
-        private Level current_level;
-        private Level previous_level;
-
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -49,29 +46,7 @@ namespace Group5.Game
 
             this.levelManager = new LevelManager(this);
 
-            this.current_level = this.levelManager.new_level(this, 1);
-
             base.Initialize();
-        }
-
-        public Level get_current_level()
-        {
-            return this.current_level;
-        }
-
-        public void set_current_level(Level new_current_level)
-        {
-            this.current_level = new_current_level;
-        }
-
-        public Level get_previous_level()
-        {
-            return this.previous_level;
-        }
-
-        public void set_previous_level(Level new_previous_level)
-        {
-            this.previous_level = new_previous_level;
         }
 
         /// <summary>
@@ -110,7 +85,7 @@ namespace Group5.Game
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            this.current_level.update(gameTime);
+            this.levelManager.update(gameTime);
 
             base.Update(gameTime);
         }
@@ -124,7 +99,7 @@ namespace Group5.Game
             GraphicsDevice.Clear(Color.Magenta);
             spriteBatch.Begin();
 
-            this.current_level.draw();
+            this.levelManager.draw(gameTime);
 
             spriteBatch.End();
             base.Draw(gameTime);

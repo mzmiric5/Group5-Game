@@ -12,6 +12,7 @@ namespace Group5.Game
         protected int movement_frequency = 1000;
         protected int movement_magnitude = 32;
         protected int sight = 128;
+        private static Random random = new Random();
 
         private int cumlative_movement_decrementor;
 
@@ -23,7 +24,7 @@ namespace Group5.Game
 
         public Direction give_random_direction()
         {
-            return (Direction)new Random().Next(3);
+            return (Direction)NPC.random.Next(4);
         }
 
         public bool check_if_time_to_move(Game1 game, GameTime gameTime)
