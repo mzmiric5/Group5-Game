@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Group5.TileEngine;
 
 namespace Group5.Game
 {
@@ -16,9 +17,9 @@ namespace Group5.Game
         public LevelManager(int level_number, Game1 game)
         {
             this.game = game;
-            this.current_level = new_level(this.game, 1);
-            this.game.set_world(new TileEngine.World());
+            this.game.set_world(new World());
             this.game.get_world().set_tile_size(32);
+            this.current_level = new_level(this.game, 1);
         }
 
         public LevelManager(Game1 game)
@@ -29,9 +30,31 @@ namespace Group5.Game
         public Level new_level(Game1 game, int level_number)
         {
             Level level = new Level(game, level_number);
+            this.load_level_areas();
             this.makeNPCs(level);
             this.makeItems(level);
             return level;
+        }
+
+        public void load_level_areas()
+        {
+            // TODO: get needed level areas from level xml node, and load all tiles in area. instead for now create some predefined tiles:
+
+            this.game.get_world().add_area(new Area(1,10,10));
+            for (int i = 0; i < 10; i++)
+            {
+                this.game.get_world().get_mAreas()[1].Tiles[i, 0] = new Tile(TileType.StoneWall);
+                this.game.get_world().get_mAreas()[1].Tiles[i, 9] = new Tile(TileType.StoneWall);
+                if ((i != 0) && (i != 9))
+                {
+                    this.game.get_world().get_mAreas()[1].Tiles[0, i] = new Tile(TileType.StoneWall);
+                    this.game.get_world().get_mAreas()[1].Tiles[9, i] = new Tile(TileType.StoneWall);
+                    for (int j = 1; j < 9; j++)
+                    {
+                        this.game.get_world().get_mAreas()[1].Tiles[j, i] = new Tile(TileType.StoneFloor);
+                    }
+                }
+            }
         }
 
         public void update(GameTime gameTime)

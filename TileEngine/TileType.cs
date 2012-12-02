@@ -7,6 +7,8 @@ namespace Group5.TileEngine
 	public enum TileType
 	{
 		Empty,
+        StoneFloor,
+        StoneWall,
 		Solid,
 		Painful,
 		Leathal,

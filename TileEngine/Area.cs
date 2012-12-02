@@ -14,16 +14,35 @@ namespace Group5.TileEngine
 		private int mHeight;
 		private Tile[,] mTiles;
 
-		public Area(int width, int height)
+        private int index;
+
+		public Area(int new_index, int width, int height)
 		{
-			mWidth = width;
+            this.index = new_index;
+
+            mWidth = width;
 			mHeight = height;
 			mTiles = new Tile[width, height];
 		}
+
+        public Area(int new_index)
+            : this(new_index, 100, 100)
+        {
+        }
 
 		public Tile[,] Tiles
 		{
 			get { return mTiles; }
 		}
+
+        public int get_index()
+        {
+            return this.index;
+        }
+
+        public void set_index(int new_index)
+        {
+            this.index = new_index;
+        }
     }
 }

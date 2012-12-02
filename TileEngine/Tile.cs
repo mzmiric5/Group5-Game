@@ -23,6 +23,11 @@ namespace Group5.TileEngine
 			mLayerTextureIndex = new int[NumLayers];
 		}
 
+        public Tile(TileType new_tile_type)
+        {
+            this.mType = new_tile_type;
+        }
+
 		/// <summary>
 		/// Gets the indicies of all the layered textures.
 		/// </summary>

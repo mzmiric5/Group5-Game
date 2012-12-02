@@ -31,6 +31,16 @@ namespace Group5.Game
             this.level_number = new_level_number;
         }
 
+        public int get_level_number()
+        {
+            return this.level_number;
+        }
+
+        public void set_level_number(int new_level_number)
+        {
+            this.level_number = new_level_number;
+        }
+
         public void update(GameTime gameTime)
         {
             if (this.game.levelManager.check_victory_condition())

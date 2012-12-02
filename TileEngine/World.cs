@@ -30,6 +30,16 @@ namespace Group5.TileEngine
 			get { return mAreas; }
 		}
 
+        public Dictionary<int, Area> get_mAreas()
+        {
+            return mAreas;
+        }
+
+        public void add_area(Area new_area)
+        {
+            this.mAreas.Add(new_area.get_index(), new_area);
+        }
+
         public int get_tile_size()
         {
             return this.tile_size;
