@@ -12,5 +12,9 @@ namespace Group5.Game
         {
         }
 
+        public void update()
+        {
+        }
+
     }
 }

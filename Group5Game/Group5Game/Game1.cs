@@ -23,22 +23,17 @@ namespace Group5.Game
         public Dictionary<string, Texture2D> texture_dictionary;
 
         public static InputState input = new InputState();
-
-        // Data Structure
-        public Player player;
-        public List<Friend> friends;
-        public List<Enemy> enemies;
-        public List<Item> items;
+        
         public LevelManager levelManager;
+
+        private Level current_level;
+        private Level previous_level;
 
         public Game1()
         {
-            friends = new List<Friend>();
-            enemies = new List<Enemy>();
-            items = new List<Item>();
-
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
             texture_dictionary = new Dictionary<string, Texture2D>();
         }
 
@@ -52,14 +47,31 @@ namespace Group5.Game
         {
             // TODO: Add your initialization logic here
 
-
             this.levelManager = new LevelManager(this);
-            this.player = new Player();
-            this.levelManager.makeNPCs(this.friends, this.enemies);
-            this.levelManager.makeItems(this.items);
 
+            this.current_level = this.levelManager.new_level(this, 1);
 
             base.Initialize();
+        }
+
+        public Level get_current_level()
+        {
+            return this.current_level;
+        }
+
+        public void set_current_level(Level new_current_level)
+        {
+            this.current_level = new_current_level;
+        }
+
+        public Level get_previous_level()
+        {
+            return this.previous_level;
+        }
+
+        public void set_previous_level(Level new_previous_level)
+        {
+            this.previous_level = new_previous_level;
         }
 
         /// <summary>
@@ -98,31 +110,7 @@ namespace Group5.Game
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            /*if ( InputState.CurrentState == attack )
-                player.attack(enemies);*/
-
-            if (levelManager.check_victory_condition())
-            {
-                Exit();
-            }
-
-            // player update
-            this.player.update(this, gameTime);
-
-            // world update
-            foreach (Friend friend in this.friends)
-            {
-                //friend.update(this);
-            }
-            foreach (Enemy enermy in this.enemies)
-            {
-                //enermy.update(this, gameTime);
-            }
-            /*foreach (Item item in this.items)
-            {
-                item.update(this);
-            }*/
-
+            this.current_level.update(gameTime);
 
             base.Update(gameTime);
         }
@@ -136,20 +124,7 @@ namespace Group5.Game
             GraphicsDevice.Clear(Color.Magenta);
             spriteBatch.Begin();
 
-            // draw all items in data structure
-            this.player.draw(this);
-            foreach (Friend friend in this.friends)
-            {
-                friend.draw(this);
-            }
-            foreach (Enemy enermy in this.enemies)
-            {
-                enermy.draw(this);
-            }
-            foreach (Item item in this.items)
-            {
-                item.draw(this);
-            }
+            this.current_level.draw();
 
             spriteBatch.End();
             base.Draw(gameTime);

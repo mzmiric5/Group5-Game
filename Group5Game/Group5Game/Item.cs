@@ -11,5 +11,9 @@ namespace Group5.Game
             : base(xIn, yIn, hIn, wIn)
         {
         }
+
+        public void update()
+        {
+        }
     }
 }
