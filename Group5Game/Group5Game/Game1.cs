@@ -81,6 +81,8 @@ namespace Group5.Game
             texture_dictionary.Add("default_player_texture", this.Content.Load<Texture2D>("textures/default_player_texture"));
             texture_dictionary.Add("milk_texture", this.Content.Load<Texture2D>("textures/milk_texture"));
             texture_dictionary.Add("ork_texture", this.Content.Load<Texture2D>("textures/ork_texture"));
+            texture_dictionary.Add("StoneFloor", this.Content.Load<Texture2D>("textures/StoneFloor"));
+            texture_dictionary.Add("StoneWall", this.Content.Load<Texture2D>("textures/StoneWall"));
 
         }
 

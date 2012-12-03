@@ -132,5 +132,26 @@ namespace Group5.Game
                     }
             }
         }
+
+        public String tile_type_to_texture_key(TileType tile_type)
+        {
+            String texture_key = "StoneFloor";
+
+            switch (tile_type)
+            {
+                case TileType.StoneFloor:
+                    {
+                        texture_key = "StoneFloor";
+                        break;
+                    }
+                case TileType.StoneWall:
+                    {
+                        texture_key = "StoneWall";
+                        break;
+                    }
+            }
+
+            return texture_key;
+        }
     }
 }

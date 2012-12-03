@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Group5.TileEngine;
 
 namespace Group5.Game
 {
@@ -15,6 +16,8 @@ namespace Group5.Game
         public List<Friend> friends;
         public List<Enemy> enemies;
         public List<Item> items;
+
+        private int current_area_index = 1;
         
         public Level(Game1 new_game)
         {
@@ -69,10 +72,23 @@ namespace Group5.Game
 
         public void draw()
         {
-            // TODO: draw tiles from tile engine here
+            for (int i = 0; i < this.game.get_world().get_mAreas()[this.current_area_index].Tiles.GetLength(0); i++)
+            {
+                for (int j = 0; j < this.game.get_world().get_mAreas()[this.current_area_index].Tiles.GetLength(1); j++)
+                {
+                    Rectangle tile_rectangle = new Rectangle(this.game.get_world().get_tile_size() * i, this.game.get_world().get_tile_size() * j, this.game.get_world().get_tile_size(), this.game.get_world().get_tile_size());
+                    if (Camera.ObjectIsVisible(tile_rectangle) == true)
+                    {
+                        game.spriteBatch.Draw(game.texture_dictionary[this.game.levelManager.tile_type_to_texture_key(this.game.get_world().get_mAreas()[this.current_area_index].Tiles[i,j].Type)], tile_rectangle, Color.White);
+                    }
+                }
+            }
+
+
+
+            
             
             Rectangle player_rectangle = new Rectangle(Convert.ToInt32(this.player.returnX()), Convert.ToInt32(this.player.returnY()), Convert.ToInt32(this.player.returnW()), Convert.ToInt32(this.player.returnH()));
-
             if (Camera.ObjectIsVisible(player_rectangle) == true)
             {
                 game.spriteBatch.Draw(game.texture_dictionary[this.player.get_texture_key()], player_rectangle, Color.White);
