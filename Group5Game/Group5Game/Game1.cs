@@ -37,6 +37,11 @@ namespace Group5.Game
             texture_dictionary = new Dictionary<string, Texture2D>();
 
             this.levelManager = new LevelManager(this);
+
+            Camera.WorldRectangle = new Rectangle(0,0,800,480);
+            Camera.Position = Vector2.Zero;
+            Camera.ViewPortWidth = 800;
+            Camera.ViewPortHeight = 480;
         }
 
         public World get_world()

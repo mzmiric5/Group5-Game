@@ -14,6 +14,10 @@ namespace Group5.Game
         private Level current_level;
         private Level previous_level;
 
+        public enum GameState { splash, main_menu, level, pause, };
+
+        private GameState game_state = GameState.level;
+
         public LevelManager(int level_number, Game1 game)
         {
             this.game = game;
@@ -119,7 +123,14 @@ namespace Group5.Game
 
         public void draw(GameTime gameTime)
         {
-            this.current_level.draw();
+            switch (this.game_state)
+            {
+                case GameState.level:
+                    {
+                        this.current_level.draw();
+                        break;
+                    }
+            }
         }
     }
 }

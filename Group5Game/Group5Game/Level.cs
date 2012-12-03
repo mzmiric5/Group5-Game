@@ -69,8 +69,15 @@ namespace Group5.Game
 
         public void draw()
         {
-            // draw all items in data structure
-            this.player.draw(this.game);
+            // TODO: draw tiles from tile engine here
+            
+            Rectangle player_rectangle = new Rectangle(Convert.ToInt32(this.player.returnX()), Convert.ToInt32(this.player.returnY()), Convert.ToInt32(this.player.returnW()), Convert.ToInt32(this.player.returnH()));
+
+            if (Camera.ObjectIsVisible(player_rectangle) == true)
+            {
+                game.spriteBatch.Draw(game.texture_dictionary[this.player.get_texture_key()], player_rectangle, Color.White);
+            }
+
             foreach (Friend friend in this.friends)
             {
                 friend.draw(this.game);

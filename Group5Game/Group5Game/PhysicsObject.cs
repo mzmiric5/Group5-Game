@@ -30,6 +30,16 @@ namespace Group5.Game
             return width;
         }
 
+        public String get_texture_key()
+        {
+            return this.texture_key;
+        }
+
+        protected void set_texture_key(String new_texture_key)
+        {
+            this.texture_key = new_texture_key;
+        }
+
         public bool get_pass_throughable()
         {
             return this.pass_throughable;
@@ -40,15 +50,9 @@ namespace Group5.Game
             this.pass_throughable = can_pass_through;
         }
 
-        virtual public void draw(Game1 game)
+        virtual public void draw(Game1 game) // aim to remove this function
         {
             game.spriteBatch.Draw(game.texture_dictionary[this.texture_key], new Rectangle(Convert.ToInt32(xCoord), Convert.ToInt32(yCoord), Convert.ToInt32(width), Convert.ToInt32(height)), Color.White);
         }
-
-        protected void set_texture_key(String new_texture_key)
-        {
-            this.texture_key = new_texture_key;
-        }
-
     }
 }
