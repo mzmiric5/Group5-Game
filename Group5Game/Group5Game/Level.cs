@@ -62,7 +62,10 @@ namespace Group5.Game
             {
                 if (this.game.levelManager.get_current_level().friends[i].get_volume_retangle().Intersects(target_rectangle) == true)
                 {
-                    return false;
+                    if (this.game.levelManager.get_current_level().friends[i].get_pass_throughable() == false)
+                    {
+                        return false;
+                    }
                 }
             }
 
@@ -70,7 +73,10 @@ namespace Group5.Game
             {
                 if (this.game.levelManager.get_current_level().enemies[i].get_volume_retangle().Intersects(target_rectangle) == true)
                 {
-                    return false;
+                    if (this.game.levelManager.get_current_level().enemies[i].get_pass_throughable() == false)
+                    {
+                        return false;
+                    }
                 }
             }
 
@@ -78,7 +84,10 @@ namespace Group5.Game
             {
                 if (this.game.levelManager.get_current_level().items[i].get_volume_retangle().Intersects(target_rectangle) == true)
                 {
-                    return false;
+                    if (this.game.levelManager.get_current_level().items[i].get_pass_throughable() == false)
+                    {
+                        return false;
+                    }
                 }
             }
 
@@ -123,31 +132,33 @@ namespace Group5.Game
                 for (int j = 0; j < this.game.get_world().get_mAreas()[this.current_area_index].Tiles.GetLength(1); j++)
                 {
                     Rectangle tile_rectangle = new Rectangle(this.game.get_world().get_tile_size() * i, this.game.get_world().get_tile_size() * j, this.game.get_world().get_tile_size(), this.game.get_world().get_tile_size());
-                    if (Camera.ObjectIsVisible(tile_rectangle) == true)
-                    {
-                        game.spriteBatch.Draw(game.texture_dictionary[this.game.levelManager.tile_type_to_texture_key(this.game.get_world().get_mAreas()[this.current_area_index].Tiles[i,j].Type)], tile_rectangle, Color.White);
-                    }
+                    this.draw_rectangle(this.game.levelManager.tile_type_to_texture_key(this.game.get_world().get_mAreas()[this.current_area_index].Tiles[i, j].Type), tile_rectangle);
                 }
             }
 
-            Rectangle player_rectangle = new Rectangle(this.game.get_world().get_tile_size() * this.player.returnX(), this.game.get_world().get_tile_size() * this.player.returnY(), this.game.get_world().get_tile_size() * this.player.returnW(), this.game.get_world().get_tile_size() * this.player.returnH());
-            if (Camera.ObjectIsVisible(player_rectangle) == true)
-            {
-                game.spriteBatch.Draw(game.texture_dictionary[this.player.get_texture_key()], player_rectangle, Color.White);
-            }
+            //Rectangle player_rectangle = new Rectangle(this.game.get_world().get_tile_size() * this.player.returnX(), this.game.get_world().get_tile_size() * this.player.returnY(), this.game.get_world().get_tile_size() * this.player.returnW(), this.game.get_world().get_tile_size() * this.player.returnH());
+            this.draw_rectangle(this.player.get_texture_key(), player.get_draw_rectangle());
 
             // TODO: old style below, needs changing to same as above
             foreach (Friend friend in this.friends)
             {
-                friend.draw(this.game);
+                this.draw_rectangle(friend.get_texture_key(), friend.get_draw_rectangle());
             }
             foreach (Enemy enermy in this.enemies)
             {
-                enermy.draw(this.game);
+                this.draw_rectangle(enermy.get_texture_key(), enermy.get_draw_rectangle());
             }
             foreach (Item item in this.items)
             {
-                item.draw(this.game);
+                this.draw_rectangle(item.get_texture_key(), item.get_draw_rectangle());
+            }
+        }
+
+        public void draw_rectangle(String texture_key, Rectangle rectangle)
+        {
+            if (Camera.ObjectIsVisible(rectangle) == true)
+            {
+                game.spriteBatch.Draw(game.texture_dictionary[texture_key], rectangle, Color.White);
             }
         }
     }

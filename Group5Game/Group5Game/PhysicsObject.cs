@@ -55,9 +55,11 @@ namespace Group5.Game
             this.pass_throughable = can_pass_through;
         }
 
-        virtual public void draw(Game1 game) // aim to remove this function
+        virtual public Rectangle get_draw_rectangle()
         {
-            game.spriteBatch.Draw(game.texture_dictionary[this.texture_key], new Rectangle(this.game.get_world().get_tile_size() * this.returnX(), this.game.get_world().get_tile_size() * this.returnY(), this.game.get_world().get_tile_size() * this.returnW(), this.game.get_world().get_tile_size() * this.returnH()), Color.White);
+            int sprite_x = (this.game.get_world().get_tile_size() * this.returnX());
+            int sprite_y = (this.game.get_world().get_tile_size() * this.returnY());
+            return new Rectangle(sprite_x, sprite_y, this.game.get_world().get_tile_size() * this.returnW(), this.game.get_world().get_tile_size() * this.returnH());
         }
     }
 }

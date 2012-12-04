@@ -8,9 +8,6 @@ namespace Group5.Game
 {
     public class NPC : Actor
     {
-
-        protected int movement_frequency = 1000;
-        protected int sight = 128;
         private static Random random = new Random();
 
         private int cumlative_movement_decrementor;
@@ -40,27 +37,6 @@ namespace Group5.Game
         virtual public void calculate_movement(Game1 game)
         {
             this.move(this.give_random_direction(), this.movement_distance);
-        }
-
-
-        public int get_movement_frequency()
-        {
-            return this.movement_frequency;
-        }
-
-        public void set_movement_frequency(int new_movement_frequency)
-        {
-            this.movement_frequency = new_movement_frequency;
-        }
-
-        public int get_sight()
-        {
-            return this.sight;
-        }
-
-        public void set_sight(int new_sight)
-        {
-            this.sight = new_sight;
         }
     }
 }

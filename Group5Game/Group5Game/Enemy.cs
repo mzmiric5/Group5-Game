@@ -17,9 +17,16 @@ namespace Group5.Game
 
         public void update(Game1 game, GameTime gameTime)
         {
-            if (check_if_time_to_move(game, gameTime))
+            if (this.get_is_moving() == true)
             {
-                calculate_movement(game);
+                this.update_movement();
+            }
+            else
+            {
+                if (check_if_time_to_move(game, gameTime))
+                {
+                    calculate_movement(game);
+                }
             }
         }
 
