@@ -93,8 +93,8 @@ namespace Group5.Game
             */
 
             // todo: change this: make stuff up for first game iteration
-            level.enemies.Add(new Ork(64, 32, 32, 32));
-            level.enemies.Add(new Ork(32, 64, 32, 32));
+            level.enemies.Add(new Ork(this.game, 2, 1, 1, 1));
+            level.enemies.Add(new Ork(this.game, 1, 2, 1, 1));
         }
 
         public void makeItems(Level level)
@@ -104,7 +104,7 @@ namespace Group5.Game
             */
 
             // todo: change this: for first game iteration make stuff up
-            level.items.Add(new Milk(64, 64, 32, 32));
+            level.items.Add(new Milk(this.game, 3, 3, 1, 1));
         }
 
         public bool check_victory_condition()
@@ -152,6 +152,27 @@ namespace Group5.Game
             }
 
             return texture_key;
+        }
+
+        public bool is_tile_type_passthroughable(TileType tile_type)
+        {
+            bool is_passthroughable = false;
+            
+            switch (tile_type)
+            {
+                case TileType.StoneFloor:
+                    {
+                        is_passthroughable = true;
+                        break;
+                    }
+                case TileType.StoneWall:
+                    {
+                        is_passthroughable = false;
+                        break;
+                    }
+            }
+
+            return is_passthroughable;
         }
     }
 }

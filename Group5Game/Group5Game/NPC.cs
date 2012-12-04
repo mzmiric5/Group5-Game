@@ -10,14 +10,13 @@ namespace Group5.Game
     {
 
         protected int movement_frequency = 1000;
-        protected int movement_magnitude = 32;
         protected int sight = 128;
         private static Random random = new Random();
 
         private int cumlative_movement_decrementor;
 
-        public NPC(int xIn, int yIn, int hIn, int wIn)
-            : base(xIn, yIn, hIn, wIn)
+        public NPC(Game1 new_game, int xIn, int yIn, int hIn, int wIn)
+            : base(new_game, xIn, yIn, hIn, wIn)
         {
             cumlative_movement_decrementor = this.get_movement_frequency();
         }
@@ -40,7 +39,7 @@ namespace Group5.Game
 
         virtual public void calculate_movement(Game1 game)
         {
-            this.move(this.give_random_direction(), this.movement_magnitude);
+            this.move(this.give_random_direction(), this.movement_distance);
         }
 
 

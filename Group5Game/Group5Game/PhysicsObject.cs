@@ -13,8 +13,8 @@ namespace Group5.Game
 
         protected bool pass_throughable = false;
 
-        public PhysicsObject(int xIn, int yIn, int hIn, int wIn)
-            : base(xIn, yIn)
+        public PhysicsObject(Game1 new_game, int xIn, int yIn, int hIn, int wIn)
+            : base(new_game, xIn, yIn)
         {
             height = hIn;
             width = wIn;
@@ -57,7 +57,7 @@ namespace Group5.Game
 
         virtual public void draw(Game1 game) // aim to remove this function
         {
-            game.spriteBatch.Draw(game.texture_dictionary[this.texture_key], new Rectangle(this.returnX(), this.returnY(), this.returnW(), this.returnH()), Color.White);
+            game.spriteBatch.Draw(game.texture_dictionary[this.texture_key], new Rectangle(this.game.get_world().get_tile_size() * this.returnX(), this.game.get_world().get_tile_size() * this.returnY(), this.game.get_world().get_tile_size() * this.returnW(), this.game.get_world().get_tile_size() * this.returnH()), Color.White);
         }
     }
 }

@@ -11,17 +11,17 @@ namespace Group5.Game
         public List<Item> inventory;
         private static String texture_key = "default_player_texture";
 
-        public Player()
-            : this(256, 256, 32, 32)
+        public Player(Game1 new_game)
+            : this(new_game, 8, 8, 1, 1)
         {
         }
 
-        public Player(int xIn, int yIn, int hIn, int wIn)
-            : base(xIn, yIn, hIn, wIn)
+        public Player(Game1 new_game, int xIn, int yIn, int hIn, int wIn)
+            : base(new_game, xIn, yIn, hIn, wIn)
         {
             this.inventory = new List<Item>();
             this.set_texture_key(Player.texture_key);
-            this.set_movement_distance(32);
+            this.set_movement_distance(1);
         }
 
         private TimeSpan time_since_last_movement = new TimeSpan(0);

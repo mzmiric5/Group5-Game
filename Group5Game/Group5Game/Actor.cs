@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
+using System.Diagnostics;
 
 namespace Group5.Game
 {
@@ -10,10 +12,10 @@ namespace Group5.Game
         protected int health, maxHealth, attackDamage;
         public enum Direction { Up, Down, Left, Right };
         protected Direction orientation;
-        private int movement_distance;
+        protected int movement_distance = 1;
 
-        public Actor(int xIn, int yIn, int hIn, int wIn)
-            : base(xIn, yIn, hIn, wIn)
+        public Actor(Game1 new_game, int xIn, int yIn, int hIn, int wIn)
+            : base(new_game, xIn, yIn, hIn, wIn)
         {
         }
 
@@ -24,50 +26,28 @@ namespace Group5.Game
 
         public void move(Direction direction, int distance)
         {
-            // TODO: add collision detection!!!
+            Rectangle target_rectangle = new Rectangle(this.returnX(), this.returnY(), this.returnW(), this.returnH());
             if (direction == Direction.Up)
             {
-                if ((this.yCoord - distance) >= 0)
-                {
-                    this.yCoord -= distance;
-                }
-                else
-                {
-                    this.yCoord = 0;
-                }
+                target_rectangle.Y -= distance;
             }
             else if (direction == Direction.Down)
             {
-                if ((this.yCoord + this.height + distance) <= 480)
-                {
-                    this.yCoord += distance;
-                }
-                else
-                {
-                    this.yCoord = 480 - this.height;
-                }
+                target_rectangle.Y += distance;
+            }
+            if (direction == Direction.Left)
+            {
+                target_rectangle.X -= distance;
             }
             else if (direction == Direction.Right)
             {
-                if ((this.xCoord + this.width + distance) <= 800)
-                {
-                    this.xCoord += distance;
-                }
-                else
-                {
-                    this.xCoord = 800 - this.width;
-                }
+                target_rectangle.X += distance;
             }
-            else if (direction == Direction.Left)
+
+            if (this.game.levelManager.get_current_level().is_rectangle_unblocked(target_rectangle) == true)
             {
-                if ((this.xCoord - distance) >= 0)
-                {
-                    this.xCoord -= distance;
-                }
-                else
-                {
-                    this.xCoord = 0;
-                }
+                this.xCoord = target_rectangle.X;
+                this.yCoord = target_rectangle.Y;
             }
         }
 

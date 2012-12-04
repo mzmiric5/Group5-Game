@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Group5.TileEngine;
+using System.Diagnostics;
 
 namespace Group5.Game
 {
@@ -22,7 +23,7 @@ namespace Group5.Game
         public Level(Game1 new_game)
         {
             this.game = new_game;
-            this.player = new Player();
+            this.player = new Player(this.game);
             this.friends = new List<Friend>();
             this.enemies = new List<Enemy>();
             this.items = new List<Item>();
@@ -42,6 +43,51 @@ namespace Group5.Game
         public void set_level_number(int new_level_number)
         {
             this.level_number = new_level_number;
+        }
+
+        public bool is_rectangle_unblocked(Rectangle target_rectangle)
+        {
+            for (int i = 0; i < target_rectangle.Width; i++)
+            {
+                for (int j = 0; j < target_rectangle.Height; j++)
+                {
+                    if (this.game.levelManager.is_tile_type_passthroughable(this.game.get_world().get_mAreas()[this.current_area_index].Tiles[target_rectangle.X + i, target_rectangle.Y + j].Type) == false)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            for (int i = 0; i < this.game.levelManager.get_current_level().friends.Count(); i++)
+            {
+                if (this.game.levelManager.get_current_level().friends[i].get_volume_retangle().Intersects(target_rectangle) == true)
+                {
+                    return false;
+                }
+            }
+
+            for (int i = 0; i < this.game.levelManager.get_current_level().enemies.Count(); i++)
+            {
+                if (this.game.levelManager.get_current_level().enemies[i].get_volume_retangle().Intersects(target_rectangle) == true)
+                {
+                    return false;
+                }
+            }
+
+            for (int i = 0; i < this.game.levelManager.get_current_level().items.Count(); i++)
+            {
+                if (this.game.levelManager.get_current_level().items[i].get_volume_retangle().Intersects(target_rectangle) == true)
+                {
+                    return false;
+                }
+            }
+
+            if (this.game.levelManager.get_current_level().player.get_volume_retangle().Intersects(target_rectangle) == true)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public void update(GameTime gameTime)
@@ -84,16 +130,13 @@ namespace Group5.Game
                 }
             }
 
-
-
-            
-            
-            Rectangle player_rectangle = new Rectangle(Convert.ToInt32(this.player.returnX()), Convert.ToInt32(this.player.returnY()), Convert.ToInt32(this.player.returnW()), Convert.ToInt32(this.player.returnH()));
+            Rectangle player_rectangle = new Rectangle(this.game.get_world().get_tile_size() * this.player.returnX(), this.game.get_world().get_tile_size() * this.player.returnY(), this.game.get_world().get_tile_size() * this.player.returnW(), this.game.get_world().get_tile_size() * this.player.returnH());
             if (Camera.ObjectIsVisible(player_rectangle) == true)
             {
                 game.spriteBatch.Draw(game.texture_dictionary[this.player.get_texture_key()], player_rectangle, Color.White);
             }
 
+            // TODO: old style below, needs changing to same as above
             foreach (Friend friend in this.friends)
             {
                 friend.draw(this.game);
