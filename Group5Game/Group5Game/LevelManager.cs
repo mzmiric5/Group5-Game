@@ -93,8 +93,8 @@ namespace Group5.Game
             */
 
             // todo: change this: make stuff up for first game iteration
-            level.enemies.Add(new Ork(0.0d, 32.0d, 32.0d, 32.0d));
-            level.enemies.Add(new Ork(32.0d, 0.0d, 32.0d, 32.0d));
+            level.enemies.Add(new Ork(64.0d, 32.0d, 32.0d, 32.0d));
+            level.enemies.Add(new Ork(32.0d, 64.0d, 32.0d, 32.0d));
         }
 
         public void makeItems(Level level)

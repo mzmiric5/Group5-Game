@@ -30,6 +30,11 @@ namespace Group5.Game
             return width;
         }
 
+        public Rectangle get_volume_retangle()
+        {
+            return new Rectangle(Convert.ToInt32(this.returnX()), Convert.ToInt32(this.returnY()), Convert.ToInt32(this.returnW()), Convert.ToInt32(this.returnH()));
+        }
+
         public String get_texture_key()
         {
             return this.texture_key;
