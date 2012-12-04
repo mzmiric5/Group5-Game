@@ -12,7 +12,7 @@ namespace Group5.Game
         protected Direction orientation;
         private int movement_distance;
 
-        public Actor(double xIn, double yIn, double hIn, double wIn)
+        public Actor(int xIn, int yIn, int hIn, int wIn)
             : base(xIn, yIn, hIn, wIn)
         {
         }

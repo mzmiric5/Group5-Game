@@ -8,31 +8,31 @@ namespace Group5.Game
 {
     public class PhysicsObject : GameObject
     {
-        protected double width, height;
+        protected int width, height;
         private String texture_key;
 
         protected bool pass_throughable = false;
 
-        public PhysicsObject(double xIn, double yIn, double hIn, double wIn)
+        public PhysicsObject(int xIn, int yIn, int hIn, int wIn)
             : base(xIn, yIn)
         {
             height = hIn;
             width = wIn;
         }
 
-        public double returnH()
+        public int returnH()
         {
             return height;
         }
 
-        public double returnW()
+        public int returnW()
         {
             return width;
         }
 
         public Rectangle get_volume_retangle()
         {
-            return new Rectangle(Convert.ToInt32(this.returnX()), Convert.ToInt32(this.returnY()), Convert.ToInt32(this.returnW()), Convert.ToInt32(this.returnH()));
+            return new Rectangle(this.returnX(), this.returnY(), this.returnW(), this.returnH());
         }
 
         public String get_texture_key()
@@ -57,7 +57,7 @@ namespace Group5.Game
 
         virtual public void draw(Game1 game) // aim to remove this function
         {
-            game.spriteBatch.Draw(game.texture_dictionary[this.texture_key], new Rectangle(Convert.ToInt32(xCoord), Convert.ToInt32(yCoord), Convert.ToInt32(width), Convert.ToInt32(height)), Color.White);
+            game.spriteBatch.Draw(game.texture_dictionary[this.texture_key], new Rectangle(this.returnX(), this.returnY(), this.returnW(), this.returnH()), Color.White);
         }
     }
 }

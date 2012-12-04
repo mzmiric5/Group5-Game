@@ -9,7 +9,7 @@ namespace Group5.Game
     {
         private int power = 0;
 
-        public Weapon(double xIn, double yIn, double hIn, double wIn)
+        public Weapon(int xIn, int yIn, int hIn, int wIn)
             : base(xIn, yIn, hIn, wIn)
         {
         }

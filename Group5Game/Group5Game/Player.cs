@@ -12,11 +12,11 @@ namespace Group5.Game
         private static String texture_key = "default_player_texture";
 
         public Player()
-            : this(256.0d, 256.0d, 32.0d, 32.0d)
+            : this(256, 256, 32, 32)
         {
         }
 
-        public Player(double xIn, double yIn, double hIn, double wIn)
+        public Player(int xIn, int yIn, int hIn, int wIn)
             : base(xIn, yIn, hIn, wIn)
         {
             this.inventory = new List<Item>();

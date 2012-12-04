@@ -10,7 +10,7 @@ namespace Group5.Game
     {
         private static String texture_key = "milk_texture";
 
-        public Milk(double xIn, double yIn, double hIn, double wIn)
+        public Milk(int xIn, int yIn, int hIn, int wIn)
             : base(xIn, yIn, hIn, wIn)
         {
             this.set_texture_key(Milk.texture_key);

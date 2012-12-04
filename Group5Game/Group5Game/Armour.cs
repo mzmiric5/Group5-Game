@@ -9,7 +9,7 @@ namespace Group5.Game
     {
         protected int strength = 0;
 
-        public Armour(double xIn, double yIn, double hIn, double wIn)
+        public Armour(int xIn, int yIn, int hIn, int wIn)
             : base(xIn, yIn, hIn, wIn)
         {
         }

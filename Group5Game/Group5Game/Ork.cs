@@ -11,11 +11,11 @@ namespace Group5.Game
         private static String texture_key = "ork_texture";
 
         public Ork()
-            : this(0.0d, 0.0d, 1.0d, 1.0d)
+            : this(0, 0, 1, 1)
         {
         }
 
-        public Ork(double xIn, double yIn, double hIn, double wIn)
+        public Ork(int xIn, int yIn, int hIn, int wIn)
             : base(xIn, yIn, hIn, wIn)
         {
             this.set_texture_key(Ork.texture_key);

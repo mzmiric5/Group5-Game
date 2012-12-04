@@ -9,20 +9,20 @@ namespace Group5.Game
 {
     public class GameObject
     {
-        protected double xCoord, yCoord;
+        protected int xCoord, yCoord;
 
-        public GameObject(double xIn, double yIn)
+        public GameObject(int xIn, int yIn)
         {
             xCoord = xIn;
             yCoord = yIn;
         }
 
-        public double returnX()
+        public int returnX()
         {
             return xCoord;
         }
 
-        public double returnY()
+        public int returnY()
         {
             return yCoord;
         }

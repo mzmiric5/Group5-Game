@@ -16,7 +16,7 @@ namespace Group5.Game
 
         private int cumlative_movement_decrementor;
 
-        public NPC(double xIn, double yIn, double hIn, double wIn)
+        public NPC(int xIn, int yIn, int hIn, int wIn)
             : base(xIn, yIn, hIn, wIn)
         {
             cumlative_movement_decrementor = this.get_movement_frequency();

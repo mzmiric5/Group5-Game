@@ -93,8 +93,8 @@ namespace Group5.Game
             */
 
             // todo: change this: make stuff up for first game iteration
-            level.enemies.Add(new Ork(64.0d, 32.0d, 32.0d, 32.0d));
-            level.enemies.Add(new Ork(32.0d, 64.0d, 32.0d, 32.0d));
+            level.enemies.Add(new Ork(64, 32, 32, 32));
+            level.enemies.Add(new Ork(32, 64, 32, 32));
         }
 
         public void makeItems(Level level)
@@ -104,7 +104,7 @@ namespace Group5.Game
             */
 
             // todo: change this: for first game iteration make stuff up
-            level.items.Add(new Milk(64.0d, 64.0d, 32.0d, 32.0d));
+            level.items.Add(new Milk(64, 64, 32, 32));
         }
 
         public bool check_victory_condition()

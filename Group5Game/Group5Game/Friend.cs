@@ -7,7 +7,7 @@ namespace Group5.Game
 {
     public class Friend : NPC
     {
-        public Friend(double xIn, double yIn, double hIn, double wIn)
+        public Friend(int xIn, int yIn, int hIn, int wIn)
             : base(xIn, yIn, hIn, wIn)
         {
         }

@@ -9,7 +9,7 @@ namespace Group5.Game
     {
         private int strength = 0;
 
-        public Consumable(double xIn, double yIn, double hIn, double wIn)
+        public Consumable(int xIn, int yIn, int hIn, int wIn)
             : base(xIn, yIn, hIn, wIn)
         {
         }

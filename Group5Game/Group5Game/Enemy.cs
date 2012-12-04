@@ -10,7 +10,7 @@ namespace Group5.Game
     {
         public bool aggresive = false;
 
-        public Enemy(double xIn, double yIn, double hIn, double wIn)
+        public Enemy(int xIn, int yIn, int hIn, int wIn)
             : base(xIn, yIn, hIn, wIn)
         {
         }
