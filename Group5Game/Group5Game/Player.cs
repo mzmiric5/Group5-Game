@@ -16,7 +16,7 @@ namespace Group5.Game
         private bool move_left_pressed = false;
         private bool move_right_pressed = false;
 
-        private int human_button_delay = 500;
+        private int human_button_delay = 200;
 
         public Player(Game1 new_game)
             : this(new_game, 8, 8, 1, 1)
@@ -29,10 +29,10 @@ namespace Group5.Game
             this.inventory = new List<Item>();
             this.set_texture_key(Player.texture_key);
             this.set_movement_distance(1);
-            this.set_movement_frequency(2);
+            this.set_movement_frequency(1);
         }
 
-        public void update(Game1 game, GameTime gameTime)
+        public void update(Game1 game, GameTime gameTime) // TODO: fix human button delay bug
         {
             this.timespan_since_last_movement += gameTime.ElapsedGameTime; 
             if (this.get_is_moving() == true)
@@ -41,7 +41,7 @@ namespace Group5.Game
             }
             else
             {
-                if (this.timespan_since_last_movement.Milliseconds >= this.human_button_delay)
+                //if (this.timespan_since_last_movement.Milliseconds >= this.human_button_delay)
                 {
                     if (Game1.input.IsUpAction() == true)
                     {

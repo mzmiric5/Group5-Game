@@ -15,6 +15,7 @@ namespace Group5.Game
         protected int movement_distance = 1;
         protected bool is_moving = false;
         protected Point movement_target;
+        protected Direction movement_direction;
         protected double percentage_of_movement_complete = 0.0d;
         protected int movement_frequency = 1;
         protected int sight = 5;
@@ -114,18 +115,19 @@ namespace Group5.Game
                 this.percentage_of_movement_complete = 0.0d;
                 this.movement_target.X = target_rectangle.X;
                 this.movement_target.Y = target_rectangle.Y;
+                this.movement_direction = direction;
                 this.set_is_moving(true);
             }
         }
         
-        public void update_movement(GameTime gameTime)//TODO: fix this
+        public void update_movement(GameTime gameTime)
         {
             this.timespan_since_last_movement_update += gameTime.ElapsedGameTime;
-            int movement_update_time_span = (1000 / this.get_movement_update_frequency());
-            if (this.timespan_since_last_movement_update.Milliseconds >= movement_update_time_span)
+            int movement_update_period = (1000 / this.get_movement_update_frequency());
+            if (this.timespan_since_last_movement_update.Milliseconds >= movement_update_period)
             {
-                this.timespan_since_last_movement_update -= new TimeSpan(0, 0, 0, 0, movement_update_time_span);
-                this.percentage_of_movement_complete += 1.0d / Convert.ToDouble(this.movement_update_frequency);
+                this.timespan_since_last_movement_update -= new TimeSpan(0, 0, 0, 0, movement_update_period);
+                this.percentage_of_movement_complete += (1.0d / Convert.ToDouble(this.movement_update_frequency)) * Convert.ToDouble(this.get_movement_frequency());
                 if (this.percentage_of_movement_complete >= 1.0d)
                 {
                     this.set_is_moving(false);
@@ -208,6 +210,42 @@ namespace Group5.Game
             }
 
             return new Rectangle(sprite_x, sprite_y, this.game.get_world().get_tile_size() * this.returnW(), this.game.get_world().get_tile_size() * this.returnH());
+        }
+
+        override public Rectangle get_volume_retangle()
+        {
+            Rectangle volume_rectangle = new Rectangle(this.returnX(), this.returnY(), this.returnW(), this.returnH());
+
+            if (this.get_is_moving() == true)
+            {
+                switch (this.movement_direction)
+                {
+                    case Direction.Up:
+                        {
+                            volume_rectangle.Y -= this.get_movement_distance();
+                            volume_rectangle.Height += this.get_movement_distance();
+                            break;
+                        }
+                    case Direction.Down:
+                        {
+                            volume_rectangle.Height += this.get_movement_distance();
+                            break;
+                        }
+                    case Direction.Left:
+                        {
+                            volume_rectangle.X -= this.get_movement_distance();
+                            volume_rectangle.Width += this.get_movement_distance();
+                            break;
+                        }
+                    case Direction.Right:
+                        {
+                            volume_rectangle.Width += this.get_movement_distance();
+                            break;
+                        }
+                }
+            }
+
+            return volume_rectangle;
         }
     }
 }

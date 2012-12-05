@@ -30,7 +30,7 @@ namespace Group5.Game
             return width;
         }
 
-        public Rectangle get_volume_retangle()
+        virtual public Rectangle get_volume_retangle()
         {
             return new Rectangle(this.returnX(), this.returnY(), this.returnW(), this.returnH());
         }
