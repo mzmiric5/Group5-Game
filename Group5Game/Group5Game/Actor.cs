@@ -16,9 +16,11 @@ namespace Group5.Game
         protected bool is_moving = false;
         protected Point movement_target;
         protected double percentage_of_movement_complete = 0.0d;
-        protected int movement_frequency = 1000;
+        protected int movement_frequency = 1;
         protected int sight = 5;
-        protected int movement_update_frequency = 10;
+        protected int movement_update_frequency = 60;
+        protected TimeSpan timespan_since_last_movement = new TimeSpan(0);
+        protected TimeSpan timespan_since_last_movement_update = new TimeSpan(0);
 
         public Actor(Game1 new_game, int xIn, int yIn, int hIn, int wIn)
             : base(new_game, xIn, yIn, hIn, wIn)
@@ -70,6 +72,16 @@ namespace Group5.Game
             this.movement_target = new_movement_target;
         }
 
+        public bool check_if_time_to_move(Game1 game, GameTime gameTime)
+        {
+            int movement_period = Convert.ToInt32(1000.0d / Convert.ToDouble(this.get_movement_frequency()));
+            if (this.timespan_since_last_movement >= new TimeSpan(movement_period))
+            {
+                return true;
+            }
+            return false;
+        }
+
         public void move(Direction direction)
         {
             this.move(direction, this.get_movement_distance());
@@ -77,6 +89,8 @@ namespace Group5.Game
 
         public void move(Direction direction, int distance)
         {
+            this.timespan_since_last_movement = new TimeSpan(0);
+
             Rectangle target_rectangle = new Rectangle(this.returnX(), this.returnY(), this.returnW(), this.returnH());
             if (direction == Direction.Up)
             {
@@ -103,15 +117,21 @@ namespace Group5.Game
                 this.set_is_moving(true);
             }
         }
-
-        public void update_movement()
+        
+        public void update_movement(GameTime gameTime)//TODO: fix this
         {
-            this.percentage_of_movement_complete += 1.0d / this.movement_update_frequency;
-            if (this.percentage_of_movement_complete >= 1.0d)
+            this.timespan_since_last_movement_update += gameTime.ElapsedGameTime;
+            int movement_update_time_span = (1000 / this.get_movement_update_frequency());
+            if (this.timespan_since_last_movement_update.Milliseconds >= movement_update_time_span)
             {
-                this.set_is_moving(false);
-                this.xCoord = Convert.ToInt32(this.movement_target.X);
-                this.yCoord = Convert.ToInt32(this.movement_target.Y);
+                this.timespan_since_last_movement_update -= new TimeSpan(0, 0, 0, 0, movement_update_time_span);
+                this.percentage_of_movement_complete += 1.0d / Convert.ToDouble(this.movement_update_frequency);
+                if (this.percentage_of_movement_complete >= 1.0d)
+                {
+                    this.set_is_moving(false);
+                    this.xCoord = Convert.ToInt32(this.movement_target.X);
+                    this.yCoord = Convert.ToInt32(this.movement_target.Y);
+                }
             }
         }
 

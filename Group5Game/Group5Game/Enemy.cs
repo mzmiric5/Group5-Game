@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using System.Diagnostics;
 
 namespace Group5.Game
 {
@@ -17,15 +18,16 @@ namespace Group5.Game
 
         public void update(Game1 game, GameTime gameTime)
         {
+            this.timespan_since_last_movement += gameTime.ElapsedGameTime;
             if (this.get_is_moving() == true)
             {
-                this.update_movement();
+                this.update_movement(gameTime);
             }
             else
             {
-                if (check_if_time_to_move(game, gameTime))
+                if (this.check_if_time_to_move(game, gameTime) == true)
                 {
-                    calculate_movement(game);
+                    this.calculate_movement(game);
                 }
             }
         }
