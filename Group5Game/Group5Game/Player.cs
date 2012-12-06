@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using System.Diagnostics;
 
 namespace Group5.Game
 {
@@ -16,10 +17,10 @@ namespace Group5.Game
         private bool move_left_pressed = false;
         private bool move_right_pressed = false;
 
-        private int human_button_delay = 200;
+        private int human_button_delay = 500;
 
         public Player(Game1 new_game)
-            : this(new_game, 8, 8, 1, 1)
+            : this(new_game, 7, 7, 1, 1)
         {
         }
 
@@ -34,39 +35,40 @@ namespace Group5.Game
 
         public void update(Game1 game, GameTime gameTime) // TODO: fix human button delay bug
         {
-            this.timespan_since_last_movement += gameTime.ElapsedGameTime; 
+            this.timespan_since_last_movement += gameTime.ElapsedGameTime;
+
+            Debug.WriteLine(this.timespan_since_last_movement.TotalMilliseconds);
+            if (this.timespan_since_last_movement >= new TimeSpan(0, 0, 0, 0, this.human_button_delay))
+            {
+                if (Game1.input.IsUpAction() == true)
+                {
+                    this.move_up_pressed = true;
+                    this.move_down_pressed = false;
+                }
+                else if (Game1.input.IsDownAction() == true)
+                {
+                    this.move_down_pressed = true;
+                    this.move_up_pressed = false;
+                }
+
+                if (Game1.input.IsLeftAction() == true)
+                {
+                    this.move_left_pressed = true;
+                    this.move_right_pressed = false;
+                }
+                else if (Game1.input.IsRightAction() == true)
+                {
+                    this.move_right_pressed = true;
+                    this.move_left_pressed = false;
+                }
+            }
+
             if (this.get_is_moving() == true)
             {
                 this.update_movement(gameTime);
             }
             else
             {
-                //if (this.timespan_since_last_movement.Milliseconds >= this.human_button_delay)
-                {
-                    if (Game1.input.IsUpAction() == true)
-                    {
-                        this.move_up_pressed = true;
-                        this.move_down_pressed = false;
-                    }
-                    else if (Game1.input.IsDownAction() == true)
-                    {
-                        this.move_down_pressed = true;
-                        this.move_up_pressed = false;
-                    }
-
-                    if (Game1.input.IsLeftAction() == true)
-                    {
-                        this.move_left_pressed = true;
-                        this.move_right_pressed = false;
-                    }
-                    else if (Game1.input.IsRightAction() == true)
-                    {
-                        this.move_right_pressed = true;
-                        this.move_left_pressed = false;
-                    }
-                }
-
-
                 if (check_if_time_to_move(game, gameTime) == true)
                 {
                     Game1.input.Update();

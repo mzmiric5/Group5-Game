@@ -23,7 +23,7 @@ namespace Group5.Game
         
         virtual public void calculate_movement(Game1 game)
         {
-            this.move(this.give_random_direction(), this.movement_distance);
+            this.move(this.give_random_direction());
         }
     }
 }

@@ -124,7 +124,7 @@ namespace Group5.Game
         {
             this.timespan_since_last_movement_update += gameTime.ElapsedGameTime;
             int movement_update_period = (1000 / this.get_movement_update_frequency());
-            if (this.timespan_since_last_movement_update.Milliseconds >= movement_update_period)
+            if (this.timespan_since_last_movement_update >= new TimeSpan(0, 0, 0, 0, movement_update_period))
             {
                 this.timespan_since_last_movement_update -= new TimeSpan(0, 0, 0, 0, movement_update_period);
                 this.percentage_of_movement_complete += (1.0d / Convert.ToDouble(this.movement_update_frequency)) * Convert.ToDouble(this.get_movement_frequency());
