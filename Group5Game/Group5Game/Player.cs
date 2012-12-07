@@ -33,10 +33,12 @@ namespace Group5.Game
             this.set_movement_frequency(1);
         }
 
-        public void update(Game1 game, GameTime gameTime) // TODO: fix human button delay bug
+        public void update(Game1 game, GameTime gameTime)
         {
             this.timespan_since_last_movement += gameTime.ElapsedGameTime;
 
+            Game1.input.Update();
+            
             Debug.WriteLine(this.timespan_since_last_movement.TotalMilliseconds);
             if (this.timespan_since_last_movement >= new TimeSpan(0, 0, 0, 0, this.human_button_delay))
             {
@@ -71,8 +73,6 @@ namespace Group5.Game
             {
                 if (check_if_time_to_move(game, gameTime) == true)
                 {
-                    Game1.input.Update();
-
                     if (this.move_up_pressed == true)
                     {
                         this.move(Direction.Up);
